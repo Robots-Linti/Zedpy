@@ -1,10 +1,10 @@
 __author__ = 'cristian'
 
 import data
-import pilas
+import pilasengine
 import solapas
 
-class Opciones(pilas.escena.Base):
+class Opciones(pilasengine.escenas.Escena):
     imag_panel='./imag/Interfaz/panelopciones.png'
     imag_fondo='./imag/Interfaz/fondo.png'
     fuente='./escenas/interfazusuario/AGENCYB.TTF'

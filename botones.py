@@ -1,5 +1,5 @@
 __author__ = 'cristian'
-import pilas
+import pilasengine
 import lib
 import prompt
 import Movimientos
@@ -45,74 +45,74 @@ class botones:
         self.control_prompt=prompt.ControladorDePrompt()
 
 
-        self.boton_1=pilas.actores.boton.Boton(x=self.posiciones.get_valor(0,0)[0],y=432,ruta_normal='imag/comando/1off.png', ruta_press='imag/comando/1on.png', ruta_over='imag/comando/1i.png')
+        self.boton_1=self.pilas.actores.Boton(x=self.posiciones.get_valor(0,0)[0],y=432,ruta_normal='imag/comando/1off.png', ruta_press='imag/comando/1on.png', ruta_over='imag/comando/1i.png')
         self.boton_1.conectar_presionado(self.__set_1)
         self.boton_1.conectar_sobre(self.boton_1.pintar_sobre)
         self.boton_1.conectar_normal(self.boton_1.pintar_normal)
         self.boton_1.aprender(pilas.habilidades.Arrastrable)
 
 
-        self.boton_2=pilas.actores.boton.Boton(x=self.posiciones.get_valor(0,1)[0],y=self.posiciones.get_valor(0,1)[1],ruta_normal='imag/comando/2off.png', ruta_press='imag/comando/2on.png', ruta_over='imag/comando/2i.png')
+        self.boton_2=pilas.actores.Boton(x=self.posiciones.get_valor(0,1)[0],y=self.posiciones.get_valor(0,1)[1],ruta_normal='imag/comando/2off.png', ruta_press='imag/comando/2on.png', ruta_over='imag/comando/2i.png')
         self.boton_2.conectar_presionado(self.__set_2)
         self.boton_2.conectar_sobre(self.boton_2.pintar_sobre)
         self.boton_2.conectar_normal(self.boton_2.pintar_normal)
 
-        self.boton_3=pilas.actores.boton.Boton(x=self.posiciones.get_valor(0,2)[0],y=self.posiciones.get_valor(0,2)[1],ruta_normal='imag/comando/3off.png', ruta_press='imag/comando/3on.png', ruta_over='imag/comando/3i.png')
+        self.boton_3=self.pilas.actores.boton.Boton(x=self.posiciones.get_valor(0,2)[0],y=self.posiciones.get_valor(0,2)[1],ruta_normal='imag/comando/3off.png', ruta_press='imag/comando/3on.png', ruta_over='imag/comando/3i.png')
         self.boton_3.conectar_presionado(self.__set_3)
         self.boton_3.conectar_sobre(self.boton_3.pintar_sobre)
         self.boton_3.conectar_normal(self.boton_3.pintar_normal)
 
-        self.boton_4=pilas.actores.boton.Boton(x=self.posiciones.get_valor(1,0)[0],y=self.posiciones.get_valor(1,0)[1],ruta_normal='imag/comando/4off.png', ruta_press='imag/comando/4on.png', ruta_over='imag/comando/4i.png')
+        self.boton_4=self.pilas.actores.Boton(x=self.posiciones.get_valor(1,0)[0],y=self.posiciones.get_valor(1,0)[1],ruta_normal='imag/comando/4off.png', ruta_press='imag/comando/4on.png', ruta_over='imag/comando/4i.png')
         self.boton_4.conectar_presionado(self.__set_4)
         self.boton_4.conectar_sobre(self.boton_4.pintar_sobre)
         self.boton_4.conectar_normal(self.boton_4.pintar_normal)
 
-        self.boton_5=pilas.actores.boton.Boton(x=self.posiciones.get_valor(1,1)[0],y=self.posiciones.get_valor(1,1)[1],ruta_normal='imag/comando/5off.png', ruta_press='imag/comando/5on.png', ruta_over='imag/comando/5i.png')
+        self.boton_5=self.pilas.actores.Boton(x=self.posiciones.get_valor(1,1)[0],y=self.posiciones.get_valor(1,1)[1],ruta_normal='imag/comando/5off.png', ruta_press='imag/comando/5on.png', ruta_over='imag/comando/5i.png')
         self.boton_5.conectar_presionado(self.__set_5)
         self.boton_5.conectar_sobre(self.boton_5.pintar_sobre)
         self.boton_5.conectar_normal(self.boton_5.pintar_normal)
 
-        self.boton_6=pilas.actores.boton.Boton(x=self.posiciones.get_valor(1,2)[0],y=self.posiciones.get_valor(1,2)[1],ruta_normal='imag/comando/6off.png', ruta_press='imag/comando/6on.png', ruta_over='imag/comando/6i.png')
+        self.boton_6=self.pilas.actores.Boton(x=self.posiciones.get_valor(1,2)[0],y=self.posiciones.get_valor(1,2)[1],ruta_normal='imag/comando/6off.png', ruta_press='imag/comando/6on.png', ruta_over='imag/comando/6i.png')
         self.boton_6.conectar_presionado(self.__set_6)
         self.boton_6.conectar_sobre(self.boton_6.pintar_sobre)
         self.boton_6.conectar_normal(self.boton_6.pintar_normal)
 
-        self.boton_7=pilas.actores.boton.Boton(x=self.posiciones.get_valor(2,0)[0], y=self.posiciones.get_valor(2,0)[1],ruta_normal='imag/comando/7off.png', ruta_press='imag/comando/7on.png', ruta_over='imag/comando/7i.png')
+        self.boton_7=self.pilas.actores.Boton(x=self.posiciones.get_valor(2,0)[0], y=self.posiciones.get_valor(2,0)[1],ruta_normal='imag/comando/7off.png', ruta_press='imag/comando/7on.png', ruta_over='imag/comando/7i.png')
         self.boton_7.conectar_presionado(self.__set_7)
         self.boton_7.conectar_sobre(self.boton_7.pintar_sobre)
         self.boton_7.conectar_normal(self.boton_7.pintar_normal)
 
-        self.boton_8=pilas.actores.boton.Boton(x=self.posiciones.get_valor(2,1)[0],y=self.posiciones.get_valor(2,1)[1],ruta_normal='imag/comando/8off.png', ruta_press='imag/comando/8on.png', ruta_over='imag/comando/8i.png')
+        self.boton_8=self.pilas.actores.Boton(x=self.posiciones.get_valor(2,1)[0],y=self.posiciones.get_valor(2,1)[1],ruta_normal='imag/comando/8off.png', ruta_press='imag/comando/8on.png', ruta_over='imag/comando/8i.png')
         self.boton_8.conectar_presionado(self.__set_8)
         self.boton_8.conectar_sobre(self.boton_8.pintar_sobre)
         self.boton_8.conectar_normal(self.boton_8.pintar_normal)
 
-        self.boton_9=pilas.actores.boton.Boton(x=self.posiciones.get_valor(2,2)[0],y=self.posiciones.get_valor(2,2)[1],ruta_normal='imag/comando/9off.png', ruta_press='imag/comando/9on.png', ruta_over='imag/comando/9i.png')
+        self.boton_9=self.pilas.actores.Boton(x=self.posiciones.get_valor(2,2)[0],y=self.posiciones.get_valor(2,2)[1],ruta_normal='imag/comando/9off.png', ruta_press='imag/comando/9on.png', ruta_over='imag/comando/9i.png')
         self.boton_9.conectar_presionado(self.__set_9)
         self.boton_9.conectar_sobre(self.boton_9.pintar_sobre)
         self.boton_9.conectar_normal(self.boton_9.pintar_normal)
 
 
-        self.boton_up=pilas.actores.boton.Boton(x=self.posiciones_flechas.get_valor(0,1)[0],y=self.posiciones_flechas.get_valor(0,1)[1],ruta_normal='imag/comando/arribaoff.png', ruta_press='imag/comando/arribaon.png', ruta_over='imag/comando/arribai.png')
+        self.boton_up=self.pilas.actores.Boton(x=self.posiciones_flechas.get_valor(0,1)[0],y=self.posiciones_flechas.get_valor(0,1)[1],ruta_normal='imag/comando/arribaoff.png', ruta_press='imag/comando/arribaon.png', ruta_over='imag/comando/arribai.png')
         self.boton_up.conectar_presionado(self.__up)
         self.boton_up.conectar_sobre(self.boton_up.pintar_sobre)
         self.boton_up.conectar_normal(self.boton_up.pintar_normal)
 
 
 
-        self.boton_left=pilas.actores.boton.Boton(x=self.posiciones_flechas.get_valor(1,0)[0],y=self.posiciones_flechas.get_valor(1,0)[1],ruta_normal='imag/comando/izquierdaoff.png', ruta_press='imag/comando/izquierdaon.png', ruta_over='imag/comando/izquierdai.png')
+        self.boton_left=self.pilas.actores.Boton(x=self.posiciones_flechas.get_valor(1,0)[0],y=self.posiciones_flechas.get_valor(1,0)[1],ruta_normal='imag/comando/izquierdaoff.png', ruta_press='imag/comando/izquierdaon.png', ruta_over='imag/comando/izquierdai.png')
         self.boton_left.conectar_presionado(self.__izquierda)
         self.boton_left.conectar_sobre(self.boton_left.pintar_sobre)
         self.boton_left.conectar_normal(self.boton_left.pintar_normal)
 
-        self.boton_right=pilas.actores.boton.Boton(x=self.posiciones_flechas.get_valor(1,2)[0],y=self.posiciones_flechas.get_valor(1,2)[1],ruta_normal='imag/comando/derechaoff.png', ruta_press='imag/comando/derechaon.png', ruta_over='imag/comando/derechai.png')
+        self.boton_right=self.pilas.actores.Boton(x=self.posiciones_flechas.get_valor(1,2)[0],y=self.posiciones_flechas.get_valor(1,2)[1],ruta_normal='imag/comando/derechaoff.png', ruta_press='imag/comando/derechaon.png', ruta_over='imag/comando/derechai.png')
         self.boton_right.conectar_presionado(self.__derecha)
         self.boton_right.conectar_sobre(self.boton_right.pintar_sobre)
         self.boton_right.conectar_normal(self.boton_right.pintar_normal)
 
 
 
-        self.boton_down=pilas.actores.boton.Boton(x=self.posiciones_flechas.get_valor(2,1)[0],y=self.posiciones_flechas.get_valor(2,1)[1],ruta_normal='imag/comando/abajooff.png', ruta_press='imag/comando/abajoon.png', ruta_over='imag/comando/abajoi.png')
+        self.boton_down=self.pilas.actores.Boton(x=self.posiciones_flechas.get_valor(2,1)[0],y=self.posiciones_flechas.get_valor(2,1)[1],ruta_normal='imag/comando/abajooff.png', ruta_press='imag/comando/abajoon.png', ruta_over='imag/comando/abajoi.png')
         self.boton_down.conectar_presionado(self.__down)
         self.boton_down.conectar_sobre(self.boton_down.pintar_sobre)
         self.boton_down.conectar_normal(self.boton_down.pintar_normal)

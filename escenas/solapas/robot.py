@@ -1,6 +1,6 @@
-__author__ = 'cristian'
+__author__ = 'cristian Steib' 
 import data
-import pilas
+import pilasengine
 import duinobot
 
 

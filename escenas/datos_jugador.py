@@ -1,6 +1,6 @@
-__author__ = 'cristian'
+__author__ = 'cristian Steib'
 
-import pilas
+import pilasengine
 import data
 class datosplayer():
     def __init__(self,instancia_jugador):

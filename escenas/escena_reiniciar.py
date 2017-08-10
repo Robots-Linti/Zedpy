@@ -1,10 +1,10 @@
-__author__ = 'cristian'
-import pilas
+__author__ = 'cristian Steib'
+import pilasengine
 import data
 import escenas
 
 
-class Reiniciar(pilas.escena.Base):
+class Reiniciar(pilasengine.escenas.Escena):
     def __init__(self, instancia_jugador):
         pilas.escena.Base.__init__(self)
         self.jugador = instancia_jugador

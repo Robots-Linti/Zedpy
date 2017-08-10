@@ -1,6 +1,6 @@
 __author__ = 'cristian'
 import Prompt
-import pilas
+import pilasengine
 '''
 este modulo maneja las imagenes y cursor del Prompt
 

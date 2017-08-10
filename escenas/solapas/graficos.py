@@ -1,5 +1,5 @@
-__author__ = 'cristian'
-import pilas
+__author__ = 'cristian Steib'
+import pilasengine
 import data
 
 class Graficos():

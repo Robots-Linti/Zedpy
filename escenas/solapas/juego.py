@@ -1,6 +1,6 @@
-__author__ = 'cristian'
+__author__ = 'cristianSteib'
 
-import pilas
+import pilasengine
 import data
 
 

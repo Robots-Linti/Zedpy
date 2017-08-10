@@ -1,24 +1,18 @@
-__author__ = 'cristian'
-import pilas
+__author__ = 'Cristian Steib'
+import pilasengine
 import escenas
 
-class EscenaDeAyuda(pilas.escena.Base):
+class EscenaDeAyuda(pilasengine.escenas.Escena):
     imag_1='./imag/ayuda/ayuda.jpg'
     imag_2='./imag/ayuda/ayuda2.jpg'
 
 
-
-
-    def __init__(self,lista):
-        self.ls=lista
-
-        pilas.escena.Base.__init__(self)
-
     def iniciar(self):
-        self.ayuda1 = pilas.actores.Actor(imagen=self.imag_1, x=0, y=0)
+        self.ls=lista
+        self.ayuda1 = self.pilas.actores.Actor(imagen=self.imag_1, x=0, y=0)
         self.ayuda1.transparencia=0
         self.ayuda1.escala=1.75
-        self.ayuda2 = pilas.actores.Actor(imagen=self.imag_2, x=0, y=0)
+        self.ayuda2 = self.pilas.actores.Actor(imagen=self.imag_2, x=0, y=0)
         self.ayuda2.transparencia=100
         self.ayuda2.escala=1.75
         self.pos=1 # en que imagen esta posicionada
@@ -27,7 +21,7 @@ class EscenaDeAyuda(pilas.escena.Base):
         self.pulsa_tecla_escape.conectar(self.__escape)
 
     def __escape(self,evento):
-        pilas.recuperar_escena()
+        self.pilas.recuperar_escena()
 
 
     def event2 (self,evento):

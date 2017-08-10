@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 import sys
-import pilas
+import pilasengine
 import data
 import Generador_movimientos_mapa
 import escenas
@@ -9,9 +9,9 @@ import random
 import duinobot
 
 
-class EscenaDeJuego(pilas.escena.Base):
-    def __init__(self, instancia_jugador, estado):
-        pilas.escena.Base.__init__(self)
+class EscenaDeJuego(pilasengine.escenas.Escena):
+    
+    def iniciar(self, instancia_jugador, estado):
         self.habilitado = True # boton robot
         self.jugador = instancia_jugador
 
@@ -114,29 +114,29 @@ class EscenaDeJuego(pilas.escena.Base):
 
 
     # Muve mi actor a la posicion indicada  por una fila y columna
-    def iniciar(self):
-        self.fondo = pilas.fondos.Fondo("./imag/Fondo.jpg")
-        self.animacion = escenas.Animacion()
+    
+        self.fondo = self.pilas.fondos.Fondo("./imag/Fondo.jpg")
+        self.animacion = escenas.Animacion(self.pilas)
         self.botones = self.animacion.getInstanciaBotones()
         self.__genera_matriz_grilla()
 
 
         # actor robotaaaa
-        self.b = pilas.actores.Board("/dev/tty/USB0")
-        self.r = pilas.actores.Robot(self.b, 1)
+        self.b = self.pilas.actores.Board("/dev/tty/USB0")
+        self.r = self.pilas.actores.Robot(self.b, 1)
         self.r.subelapiz()
         self.r.actor.radio_de_colision = 5
         self.r.actor.escala = 0
-        self.r.actor.eliminar_habilidad(pilas.habilidades.Arrastrable)
-        self.tarea_animacion_robot = pilas.mundo.agregar_tarea(0.2, self.alternar_animacion_robot)
+        self.r.actor.eliminar_habilidad(self.pilas.habilidades.Arrastrable)
+        self.tarea_animacion_robot = self.pilas.tareas.agregar(0.2, self.alternar_animacion_robot)
 
 
         if self.config.graficos==True  and self.config.lvlup==False:
-            self.tarea_aparecer_todo = pilas.mundo.agregar_tarea(6, self._mostrar_robot)
+            self.tarea_aparecer_todo = self.pilas.tareas.agregar(6, self._mostrar_robot)
         else:
-            self.tarea_aparecer_todo = pilas.mundo.agregar_tarea(1, self._mostrar_robot)
+            self.tarea_aparecer_todo = self.pilas.tareas.agregar(1, self._mostrar_robot)
 
-        self.sonido = pilas.actores.Sonido()
+        self.sonido = self.pilas.actores.Sonido()
 
         self.posicion_jugador = lib.Punto()
         self.posicion_jugador_ant = lib.Punto()
@@ -154,7 +154,7 @@ class EscenaDeJuego(pilas.escena.Base):
     def show_time(self):
         a = self.tiempo_final - self.control_tiempo.actual()
         if a.seconds == 0:
-            self.tiempo.color = pilas.colores.rojo
+            self.tiempo.color = self.pilas.colores.rojo
             self.tiempo_final = self.control_tiempo.next_time(self.config.tiempodescuento)
             self.puntaje.disminuir = 100  # cada 15seg se empieza  disminuir el puntaje
 
@@ -175,7 +175,7 @@ class EscenaDeJuego(pilas.escena.Base):
         self.dibujar_datos()
         self.tiempo.escala = [1], 1.5
         # TAREA QUE MUEVE EL PERSONAJE EN CADA MOMENTO QUE SE PRESIONA UN BOTON
-        self.tarea_mover = pilas.mundo.agregar_tarea_siempre(0.01, self.__realizar_movimiento)
+        self.tarea_mover = self.pilas.tareas.siempre(0.01, self.__realizar_movimiento)
 
        #pilas.mundo.agregar_tarea_siempre(2, self._conexiones)
        #pilas.mundo.agregar_tarea_siempre(0.6, self._habilitar_boton_robot)

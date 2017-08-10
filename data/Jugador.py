@@ -187,7 +187,8 @@ class Jugador(object):
 
         """
         self._nivel = numero_de_nivel
-
+        print("###########################3")
+        print("datos del jugador {}".format(self._datos))
         self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
         self._vida_start=self._datos['niveles'][numero_de_nivel]['vidas_start']
         self._pto_max=self._datos['niveles'][numero_de_nivel]['pto_max']

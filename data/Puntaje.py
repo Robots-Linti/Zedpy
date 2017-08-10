@@ -1,12 +1,12 @@
 # -*- encoding: utf-8 -*-
-import pilas
+import pilasengine
 import data
 
 
 class Puntaje(object):
     """Representa un contador de Puntaje"""
 
-    def __init__(self,jugador=None, texto='0', size = 30, x=0, y=0, color=pilas.colores.negro):
+    def __init__(self,jugador=None, texto='0', size = 30, x=0, y=0, color=pilasengine.colores.negro):
 
         self.instancia_jugador=jugador
         self.color = color
