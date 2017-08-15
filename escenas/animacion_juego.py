@@ -22,12 +22,10 @@ class Animacion(object):
         self.placalcd = self.pilas.actores.Actor(imagen='imag/Interfaz/placalcd.png', x=-37, y=-744)
         self.placalcd.escala = 1
 
-
         # actor que es la imageen de engranajes de la izquierda
         self.imag_engr_izq = self.pilas.actores.Actor(imagen='imag/Interfaz/Engraizq_1.png', x=-677, y=1)
         self.imag_engr_izq.escala = 1
         self.fin_x_chapa = -401
-
 
 
         # actor que es la imageen de engranajes de la derecha
@@ -35,15 +33,14 @@ class Animacion(object):
         self.imag_engr_der.escala = 1
         self.fin_x_chapa_dercha = 355
 
-
         # ENGRANAJE 1 Que SE MUEVE
-
+       
         imag_engranaje = self.pilas.imagenes.cargar('imag/Interfaz/engra1.png')
-        self.engranaje_1 = self.pilas.actores.Mono(imagen = imag_engranaje)
+        #~ self.engranaje_1 = self.pilas.actores.Mono(imagen = imag_engranaje)
+        self.engranaje_1 = self.pilas.actores.Actor(imagen = imag_engranaje)
         #~ self.engranaje_1.set_imagen()
         self.engranaje_1.x = 231
         self.engranaje_1.y = -64
-
         imag_tele = self.pilas.imagenes.cargar_grilla('imag/Interfaz/tvmenor.png', 2)
         imag_tele.escala = 0.2
         self.tele = self.pilas.actores.Animacion(imag_tele, x=211, y=24, ciclica=True, velocidad=50)
@@ -54,7 +51,7 @@ class Animacion(object):
 
 
         # BOTON RUN
-        self.boton_run = self.pilas.actores.boton.Boton(x=820, y=-1085, ruta_normal='imag/comando/Controles/runoff.png',
+        self.boton_run = self.pilas.actores.Boton(x=820, y=-1085, ruta_normal='imag/comando/Controles/runoff.png',
                                                    ruta_press='imag/comando/Controles/runon.png',
                                                    ruta_over='imag/comando/Controles/runover.png')
         self.boton_run.conectar_presionado(self.__run)
@@ -64,7 +61,7 @@ class Animacion(object):
 
 
         # BOTON ROBOT
-        self.boton_robot = self.pilas.actores.boton.Boton(x=1100, y=-1085, ruta_normal='imag/comando/Controles/robotnul.png',
+        self.boton_robot = self.pilas.actores.Boton(x=1100, y=-1085, ruta_normal='imag/comando/Controles/robotnul.png',
                                                      ruta_press='imag/comando/Controles/roboton.png',
                                                      ruta_over='imag/comando/Controles/robotover.png')
         self.boton_robot.conectar_presionado(self.__run)
@@ -78,6 +75,7 @@ class Animacion(object):
 
         self.imag_fueradelmapa()  # se crea la imagen con transparencia 100% para que quede por debajo del robot
 
+        
 
 
         # TAREA Y VARIABLES QUE SE ENCARGA DE GIRAR EL ENGRANAJE
@@ -88,22 +86,27 @@ class Animacion(object):
         #~ self.tarea_engranaje = self.pilas.tareas.agregar(0.01, self.girar_engranaje)
         #~ self.tarea_stop_engranaje = self.pilas.tareas.agregar(1.6, self.stop_engranaje)
 
-        self.botones = botones.botones()
+        self.botones = botones.botones(self.pilas)
 
+        print("+++++pase por botones++++++++")
 
         if self.config.graficos == True and self.config.lvlup==False:
-            self.pilas.interpolar(self.placalcd,'y' ,-145, tipo='lineal', duracion=4)
-            self.pilas.interpolar(self.imag_engr_izq,'x',self.fin_x_chapa, tipo='lineal',  duracion=2)
-            self.pilas.interpolar(self.imag_engr_der, 'x', self.fin_x_chapa_dercha, tipo='lineal',  duracion=2)
-            self.pilas.interpolar(self.engranaje_1,'x',775, tipo='lineal', duracion=2)
-            self.pilas.interpolar(self.tele,'x',1100, tipo='lineal',  duracion=2)
-            self.pilas.interpolar(self.joystick,'y' ,-485, tipo='lineal', demora=4, duracion=2)
-            self.pilas.interpolar(self.boton_run,'y' ,-485, tipo='lineal', demora=4, duracion=2)
-            self.pilas.interpolar(self.boton_robot,'y' ,-485, tipo='lineal', demora=4, duracion=2)
-            self.pilas.interpolar(self.imag_grilla,'y' ,110, tipo='elastico_final', demora=3, duracion=4)
+            print("+++++pase por antes de interpolar en animacion++++++++")
+            self.pilas.utils.interpolar(self.placalcd,'y' ,-145, tipo='lineal', duracion=4)
+            self.pilas.utils.interpolar(self.imag_engr_izq,'x',self.fin_x_chapa, tipo='lineal',  duracion=2)
+            self.pilas.utils.interpolar(self.imag_engr_der, 'x', self.fin_x_chapa_dercha, tipo='lineal',  duracion=2)
+            self.pilas.utils.interpolar(self.engranaje_1,'x',775, tipo='lineal', duracion=2)
+            self.pilas.utils.interpolar(self.tele,'x',1100, tipo='lineal',  duracion=2)
+            self.pilas.utils.interpolar(self.joystick,'y' ,-485, tipo='lineal',  duracion=2)
+            self.pilas.utils.interpolar(self.boton_run,'y' ,-485, tipo='lineal',  duracion=2)
+            self.pilas.utils.interpolar(self.boton_robot,'y' ,-485, tipo='lineal',  duracion=2)
+            self.pilas.utils.interpolar(self.imag_grilla,'y' ,110, tipo='elastico',  duracion=4)
             # TAREA QUE HABILITA LOS BOTONES DE LOS NUMEROS Y COMANDOS
-            self.tarea_habilitar_botones = self.pilas.tareas.agregar(7, self.habilitar_botones)
+            #~ self.tarea_habilitar_botones = self.pilas.tareas.agregar_tarea(7, self.habilitar_botones)
+            print("+++++pase por antes de agregar taarea y despues de interpolar en animacion++++++++")
 
+            self.pilas.tareas.agregar(7, self.habilitar_botones)
+            print("+++++pase por despues de agregar tarea++++++++")
 
 
 
@@ -119,7 +122,7 @@ class Animacion(object):
             self.imag_grilla.y = 110
             self.imag_grilla.y = 110
             # TAREA QUE HABILITA LOS BOTONES DE LOS NUMEROS Y COMANDOS
-            self.tarea_habilitar_botones = self.pilas.tareas.agregar(2, self.habilitar_botones)
+            self.tarea_habilitar_botones = self.pilas.tareas.agregar_tarea(2, self.habilitar_botones)
 
     def __move_robot(self):
         # ACA ES DONDE SE MANDA LA LISTA CON LOS MOVIMIENTOS
@@ -148,7 +151,7 @@ class Animacion(object):
 
     def imag_fueradelmapa(self):
         # primero creo la imagen ., por una cuestion de superposicion de las cosas
-        self._fuera_del_mapa = self.pilas.actores.Actor(self.imag_fuera_de_mapa, x=-140, y=80)
+        self._fuera_del_mapa = self.pilas.actores.Actor(imagen=self.imag_fuera_de_mapa, x=-140, y=80)
         self._fuera_del_mapa.z = -5
         self.trans = 100
         self._fuera_del_mapa.transparencia = 100

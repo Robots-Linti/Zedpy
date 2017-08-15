@@ -14,7 +14,7 @@ __doc__ = """
 Modulo Jugador:
 ============
 
-al crear la instancia de jugador , luego hay que asignarle valoreres , con el metodo setJugador
+al crear la instancia de jugador , luego hay que asignarle valores , con el metodo setJugador
 ej:
     instancia=data.Jugador()
     instancia.jugador(nombre)
@@ -188,8 +188,11 @@ class Jugador(object):
         """
         self._nivel = numero_de_nivel
         print("###########################3")
-        print("datos del jugador {}".format(self._datos))
+        print("datos del jugador {} y nro nro nivel {}".format(self._datos, numero_de_nivel))
+        
         self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
+        
+        
         self._vida_start=self._datos['niveles'][numero_de_nivel]['vidas_start']
         self._pto_max=self._datos['niveles'][numero_de_nivel]['pto_max']
         self._pto_obt=self._datos['niveles'][numero_de_nivel]['pto_obtenido']
@@ -203,7 +206,7 @@ class Jugador(object):
 
 
     def _getDatosNivel(self):
-        """Devuelve datos de el nivel solicitado"""
+        """Devuelve datos del nivel solicitado"""
         try:
             value=self._datos['niveles'][self._nivel]
             return value

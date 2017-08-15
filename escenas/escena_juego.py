@@ -102,8 +102,10 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
         self._pto_inicial()  # genera una posicion random en el mapa para el robot
         self._pto_final()  # genera otro punto pero para donde tiene que alcazar el robot
-
+        print("+++++pase por pto final++++++++")
         self.movimientos = Generador_movimientos_mapa.iniciar(12, 15, self.pos_inicio[0])
+        print("+++++pase por generador de mov++++++++")
+
         self.giro_ant = 0
         self.indi = 0
         self.giro = 0
@@ -117,8 +119,11 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
     
         self.fondo = self.pilas.fondos.Fondo("./imag/Fondo.jpg")
         self.animacion = escenas.Animacion(self.pilas)
+        print("+++++pase por animacion linea 121 de escena juego++++++++")
         self.botones = self.animacion.getInstanciaBotones()
+        print("+++++pase por animacion instancia botones++++++++")
         self.__genera_matriz_grilla()
+        print("+++++pase por matriz grilla++++++++")
 
 
         # actor robotaaaa

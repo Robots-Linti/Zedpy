@@ -26,7 +26,11 @@ texto = ''
 for each in lista:
     linea = ''
     partes=each.split("=")
-    linea = linea+'self.'+partes[1].split("(")[0]+'('+partes[0].split(".")[0]
+    
+    
+    linea = linea+'self.'+partes[1].split("(")[0]
+    
+    linea = linea+'('+partes[0].split(".")[0]
     
     #actor + atributo
     linea = linea +'.'+partes[0].split(".")[1]+",'"+partes[0].split(".")[2]+"',"

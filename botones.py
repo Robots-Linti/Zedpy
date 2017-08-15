@@ -7,7 +7,8 @@ import data
 
 
 class botones:
-    def  __init__(self):
+    def  __init__(self, pilas):
+        self.pilas = pilas
         self.config=data.Configuracion()
         #Se crea instancia de movimientos , donde estaran todos los movientos
         #almacenados de la manera de tupla ('moviento',cantidad de veces)
@@ -49,15 +50,15 @@ class botones:
         self.boton_1.conectar_presionado(self.__set_1)
         self.boton_1.conectar_sobre(self.boton_1.pintar_sobre)
         self.boton_1.conectar_normal(self.boton_1.pintar_normal)
-        self.boton_1.aprender(pilas.habilidades.Arrastrable)
+        self.boton_1.aprender(self.pilas.habilidades.Arrastrable)
 
 
-        self.boton_2=pilas.actores.Boton(x=self.posiciones.get_valor(0,1)[0],y=self.posiciones.get_valor(0,1)[1],ruta_normal='imag/comando/2off.png', ruta_press='imag/comando/2on.png', ruta_over='imag/comando/2i.png')
+        self.boton_2=self.pilas.actores.Boton(x=self.posiciones.get_valor(0,1)[0],y=self.posiciones.get_valor(0,1)[1],ruta_normal='imag/comando/2off.png', ruta_press='imag/comando/2on.png', ruta_over='imag/comando/2i.png')
         self.boton_2.conectar_presionado(self.__set_2)
         self.boton_2.conectar_sobre(self.boton_2.pintar_sobre)
         self.boton_2.conectar_normal(self.boton_2.pintar_normal)
 
-        self.boton_3=self.pilas.actores.boton.Boton(x=self.posiciones.get_valor(0,2)[0],y=self.posiciones.get_valor(0,2)[1],ruta_normal='imag/comando/3off.png', ruta_press='imag/comando/3on.png', ruta_over='imag/comando/3i.png')
+        self.boton_3=self.pilas.actores.Boton(x=self.posiciones.get_valor(0,2)[0],y=self.posiciones.get_valor(0,2)[1],ruta_normal='imag/comando/3off.png', ruta_press='imag/comando/3on.png', ruta_over='imag/comando/3i.png')
         self.boton_3.conectar_presionado(self.__set_3)
         self.boton_3.conectar_sobre(self.boton_3.pintar_sobre)
         self.boton_3.conectar_normal(self.boton_3.pintar_normal)
@@ -151,33 +152,32 @@ class botones:
         if self.config.graficos==True and self.config.lvlup==False:
              ## comienZo de todas las interpolaciones de los botones
             #self.boton_1.x=pilas.interpolar(self.posiciones.get_valor(0,0)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_1.x=pilas.interpolar(self.posiciones.get_valor(0,0)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_1.y=pilas.interpolar(self.posiciones.get_valor(0,0)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_2.x=pilas.interpolar(self.posiciones.get_valor(0,1)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_2.y=pilas.interpolar(self.posiciones.get_valor(0,1)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_3.x=pilas.interpolar(self.posiciones.get_valor(0,2)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_3.y=pilas.interpolar(self.posiciones.get_valor(0,2)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_4.x=pilas.interpolar(self.posiciones.get_valor(1,0)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_4.y=pilas.interpolar(self.posiciones.get_valor(1,0)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_5.x=pilas.interpolar(self.posiciones.get_valor(1,1)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_5.y=pilas.interpolar(self.posiciones.get_valor(1,1)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_6.x=pilas.interpolar(self.posiciones.get_valor(1,2)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_6.y=pilas.interpolar(self.posiciones.get_valor(1,2)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_7.x=pilas.interpolar(self.posiciones.get_valor(2,0)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_7.y=pilas.interpolar(self.posiciones.get_valor(2,0)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_8.x=pilas.interpolar(self.posiciones.get_valor(2,1)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_8.y=pilas.interpolar(self.posiciones.get_valor(2,1)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_9.x=pilas.interpolar(self.posiciones.get_valor(2,2)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_9.y=pilas.interpolar(self.posiciones.get_valor(2,0)[1],tipo='lineal',demora=1 , duracion=2)
-
-            self.boton_up.x=pilas.interpolar(self.posiciones_flechas.get_valor(0,1)[0],tipo='lineal',demora=1 ,   duracion=2)
-            self.boton_up.y=pilas.interpolar(self.posiciones_flechas.get_valor(0,1)[1],tipo='lineal',demora=1 ,   duracion=2)
-            self.boton_down.x=pilas.interpolar(self.posiciones_flechas.get_valor(2,1)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_down.y=pilas.interpolar(self.posiciones_flechas.get_valor(2,1)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_left.x=pilas.interpolar(self.posiciones_flechas.get_valor(1,0)[0],tipo='lineal',demora=1 , duracion=2)
-            self.boton_left.y=pilas.interpolar(self.posiciones_flechas.get_valor(1,0)[1],tipo='lineal',demora=1 , duracion=2)
-            self.boton_right.x=pilas.interpolar(self.posiciones_flechas.get_valor(1,2)[0],tipo='lineal',demora=1 ,duracion=2)
-            self.boton_right.y=pilas.interpolar(self.posiciones_flechas.get_valor(1,2)[1],tipo='lineal',demora=1 ,duracion=2)
+            self.pilas.utils.interpolar(self.boton_1,'x',self.posiciones.get_valor(0,0)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_1,'y',self.posiciones.get_valor(0,0)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_2,'x',self.posiciones.get_valor(0,1)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_2,'y',self.posiciones.get_valor(0,1)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_3,'x',self.posiciones.get_valor(0,2)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_3,'y',self.posiciones.get_valor(0,2)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_4,'x',self.posiciones.get_valor(1,0)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_4,'y',self.posiciones.get_valor(1,0)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_5,'x',self.posiciones.get_valor(1,1)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_5,'y',self.posiciones.get_valor(1,1)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_6,'x',self.posiciones.get_valor(1,2)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_6,'y',self.posiciones.get_valor(1,2)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_7,'x',self.posiciones.get_valor(2,0)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_7,'y',self.posiciones.get_valor(2,0)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_8,'x',self.posiciones.get_valor(2,1)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_8,'y',self.posiciones.get_valor(2,1)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_9,'x',self.posiciones.get_valor(2,2)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_9,'y',self.posiciones.get_valor(2,0)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_up,'x',self.posiciones_flechas.get_valor(0,1)[0],tipo='lineal' ,   duracion=2)
+            self.pilas.utils.interpolar(self.boton_up,'y',self.posiciones_flechas.get_valor(0,1)[1],tipo='lineal' ,   duracion=2)
+            self.pilas.utils.interpolar(self.boton_down,'x',self.posiciones_flechas.get_valor(2,1)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_down,'y',self.posiciones_flechas.get_valor(2,1)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_left,'x',self.posiciones_flechas.get_valor(1,0)[0],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_left,'y',self.posiciones_flechas.get_valor(1,0)[1],tipo='lineal' , duracion=2)
+            self.pilas.utils.interpolar(self.boton_right,'x',self.posiciones_flechas.get_valor(1,2)[0],tipo='lineal' ,duracion=2)
+            self.pilas.utils.interpolar(self.boton_right,'y',self.posiciones_flechas.get_valor(1,2)[1],tipo='lineal' ,duracion=2)
 
         else:
             self.boton_1.x=self.posiciones.get_valor(0,0)[0]
@@ -220,8 +220,10 @@ class botones:
 
 
     def habilitar_botones(self,estado=True):
+        print("+++++pase por habilitar botones++++++++")
         self.estado_botones=estado
         self.control_prompt.aparecer_botones()
+        print("+++++pase por termino habilitar botones++++++++")
 
     def __retroceso(self):
         self.control_prompt.elimino_todo()
