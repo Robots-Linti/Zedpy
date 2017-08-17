@@ -220,10 +220,8 @@ class botones:
 
 
     def habilitar_botones(self,estado=True):
-        print("+++++pase por habilitar botones++++++++")
         self.estado_botones=estado
         self.control_prompt.aparecer_botones()
-        print("+++++pase por termino habilitar botones++++++++")
 
     def __retroceso(self):
         self.control_prompt.elimino_todo()

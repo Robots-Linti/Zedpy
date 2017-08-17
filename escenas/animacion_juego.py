@@ -88,10 +88,8 @@ class Animacion(object):
 
         self.botones = botones.botones(self.pilas)
 
-        print("+++++pase por botones++++++++")
 
         if self.config.graficos == True and self.config.lvlup==False:
-            print("+++++pase por antes de interpolar en animacion++++++++")
             self.pilas.utils.interpolar(self.placalcd,'y' ,-145, tipo='lineal', duracion=4)
             self.pilas.utils.interpolar(self.imag_engr_izq,'x',self.fin_x_chapa, tipo='lineal',  duracion=2)
             self.pilas.utils.interpolar(self.imag_engr_der, 'x', self.fin_x_chapa_dercha, tipo='lineal',  duracion=2)
@@ -103,10 +101,8 @@ class Animacion(object):
             self.pilas.utils.interpolar(self.imag_grilla,'y' ,110, tipo='elastico',  duracion=4)
             # TAREA QUE HABILITA LOS BOTONES DE LOS NUMEROS Y COMANDOS
             #~ self.tarea_habilitar_botones = self.pilas.tareas.agregar_tarea(7, self.habilitar_botones)
-            print("+++++pase por antes de agregar taarea y despues de interpolar en animacion++++++++")
 
             self.pilas.tareas.agregar(7, self.habilitar_botones)
-            print("+++++pase por despues de agregar tarea++++++++")
 
 
 
