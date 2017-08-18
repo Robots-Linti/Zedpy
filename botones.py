@@ -6,7 +6,7 @@ import Movimientos
 import data
 
 
-class botones:
+class Botones():
     def  __init__(self, pilas):
         self.pilas = pilas
         self.config=data.Configuracion()
@@ -43,7 +43,7 @@ class botones:
                 x=x+135
             y=y-129
 
-        self.control_prompt=prompt.ControladorDePrompt()
+        self.control_prompt=prompt.ControladorDePrompt(self.pilas)
 
 
         self.boton_1=self.pilas.actores.Boton(x=self.posiciones.get_valor(0,0)[0],y=432,ruta_normal='imag/comando/1off.png', ruta_press='imag/comando/1on.png', ruta_over='imag/comando/1i.png')

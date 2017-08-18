@@ -86,7 +86,7 @@ class Animacion(object):
         #~ self.tarea_engranaje = self.pilas.tareas.agregar(0.01, self.girar_engranaje)
         #~ self.tarea_stop_engranaje = self.pilas.tareas.agregar(1.6, self.stop_engranaje)
 
-        self.botones = botones.botones(self.pilas)
+        self.botones = botones.Botones(self.pilas)
 
 
         if self.config.graficos == True and self.config.lvlup==False:
@@ -160,13 +160,15 @@ class Animacion(object):
 
     def alternar_animacion_robot(self, r):
         if self.robot_animacion == False:
-            r.actor.set_imagen(self.imagen_actor_robot_1)
+            #~ r.set_imagen(self.imagen_actor_robot_1)
+            r.imagen = self.imagen_actor_robot_1
             self.robot_animacion = True
             return True
 
         else:
             self.robot_animacion = False
-            r.actor.set_imagen(self.imagen_actor_robot_2)
+            #~ r.set_imagen(self.imagen_actor_robot_2)
+            r.imagen = self.imagen_actor_robot_2
             return True
 
     def getInstanciaBotones(self):

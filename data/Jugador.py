@@ -190,6 +190,7 @@ class Jugador(object):
         print("###########################3")
         print("datos del jugador {} y nro nro nivel {}".format(self._datos, numero_de_nivel))
         
+        #~ self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
         self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
         
         

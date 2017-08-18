@@ -6,7 +6,10 @@ import Generador_movimientos_mapa
 import escenas
 import lib
 import random
-import duinobot
+try:
+	import duinobot
+except:
+	print "Error al importar el modulo duinobot."
 
 
 class EscenaDeJuego(pilasengine.escenas.Escena):
@@ -123,12 +126,18 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
 
         # actor robotaaaa
-        self.b = self.pilas.actores.Board("/dev/tty/USB0")
-        self.r = self.pilas.actores.Robot(self.b, 1)
-        self.r.subelapiz()
-        self.r.actor.radio_de_colision = 5
-        self.r.actor.escala = 0
-        self.r.actor.eliminar_habilidad(self.pilas.habilidades.Arrastrable)
+        #~ try:
+			#~ self.b = duinobot.Board("/dev/tty/USB0")
+        #~ except:
+        #~ self.b = None
+			#~ print "Error al conectarse al xBee"
+        #~ self.r = duinobot.Robot(self.b, 1)
+        imagen = self.pilas.imagenes.cargar("imag/Interfaz/Actor/robot2.png")
+        self.r = self.pilas.actores.Actor()
+        self.r.imagen = imagen
+        self.r.radio_de_colision = 5
+        self.r.escala = 0
+        #~ self.r.actor.eliminar_habilidad(self.pilas.habilidades.Arrastrable)
         self.tarea_animacion_robot = self.pilas.tareas.agregar(0.2, self.alternar_animacion_robot)
 
 
@@ -168,7 +177,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         return True
 
     def _mostrar_robot(self):
-        self.r.actor.escala = [1], 0.9
+        self.r.escala = [1], 0.9
         # Dibuja la bandera de fin , osea el objetivo
         self._dibujar_fin()
         self.dibujar_cajas()
@@ -183,34 +192,34 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
     def dibujar_datos(self):
         # texto que muestra el tiempo disponible
-        self.tiempo = pilas.actores.Texto(x=1150, y=-50, magnitud=60, fuente='./data/hollowpoint.ttf')
-        self.tiempo.color = pilas.colores.verde_transparente
+        self.tiempo = self.pilas.actores.Texto(x=1150, y=-50, magnitud=60, fuente='./data/hollowpoint.ttf')
+        self.tiempo.color = self.pilas.colores.verde_transparente
         self.tiempo.escala = 0
         self.control_tiempo.iniciar_tiempo()
         self.tiempo_final = self.control_tiempo.next_time(self.config.tiempomaximo)
-        pilas.mundo.agregar_tarea_siempre(0.4, self.show_time)
+        self.pilas.tareas.siempre(0.4, self.show_time)
 
-        self.puntaje = data.Puntaje(x=1050, y=290, jugador=self.jugador, size=60)
+        self.puntaje = data.Puntaje(self.pilas, x=1050, y=290, jugador=self.jugador, size=60)
         self.puntaje.z = -5
         # if self.jugador.nivel == 0:
         self.puntaje.definir(self.puntaje_max)
 
-        self.barra_vida = pilas.actores.Energia(x=1130, y=415, progreso=100, ancho=400, alto=60)
+        self.barra_vida = self.pilas.actores.Energia(x=1130, y=415, progreso=100, ancho=400, alto=60)
         self.barra_vida.z = -6.5
         text = 'Nivel ' + str(self.jugador.nivel)
-        self.t = pilas.actores.Texto(text, magnitud=70, fuente='./data/hollowpoint.ttf', x=1130, y=130)
+        self.t = self.pilas.actores.Texto(text, magnitud=70, fuente='./data/hollowpoint.ttf', x=1130, y=130)
         self.t.z = -5
 
-        self.vidas=pilas.actores.Texto(x=1100, y=30, magnitud=60, fuente='./data/hollowpoint.ttf')
+        self.vidas=self.pilas.actores.Texto(x=1100, y=30, magnitud=60, fuente='./data/hollowpoint.ttf')
         self.vidas.texto='Vidas:'+str (self.jugador.vida_start)
         self.vidas.z=-5
         if self.jugador.vida_start == 1:
-            self.vidas.color=pilas.colores.rojo
+            self.vidas.color=self.pilas.colores.rojo
 
     def _dibujar_fin(self):
         coord = self.matrix.get_valor(self.pos_fin[0][0], self.pos_fin[0][1])
-        imag_fin = pilas.imagenes.cargar_grilla('./imag/Interfaz/Actor/estrella.png', 2)
-        self.imag_fin = pilas.actores.Animacion(imag_fin, x=coord[0], y=coord[1], ciclica=True, velocidad=10)
+        imag_fin = self.pilas.imagenes.cargar_grilla('./imag/Interfaz/Actor/estrella.png', 2)
+        self.imag_fin = self.pilas.actores.Animacion(imag_fin, x=coord[0], y=coord[1], ciclica=True, velocidad=10)
         self.imag_fin.escala=2
         self.imag_fin.escala=[1],2
 
@@ -256,13 +265,13 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         #    3=Apunta IZQUIERDA
 
         if value == 0:
-            self.r.actor.rotacion = 180  # 180
+            self.r.rotacion = 180  # 180
         elif value == 1:
-            self.r.actor.rotacion = 270  # 270
+            self.r.rotacion = 270  # 270
         elif value == 2:
-            self.r.actor.rotacion = 0  # 0
+            self.r.rotacion = 0  # 0
         elif value == 3:
-            self.r.actor.rotacion = 90  # 90
+            self.r.rotacion = 90  # 90
 
         self.giro_ant = value
 
@@ -338,7 +347,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         for pos_matriz in posiciones:
             coordenadas.append(self.matrix.get_valor(pos_matriz[0], pos_matriz[1]))
         for coord in coordenadas:
-            caja = pilas.actores.Bomba()
+            caja = self.pilas.actores.Bomba()
             caja.escala = [0]
             caja.x = coord[0]
             caja.y = coord[1]
@@ -346,7 +355,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
             self.lista_cajas.append(caja)
 
     def detecto_colision(self):
-        pilas.escena_actual().colisiones.agregar(self.r.actor, self.lista_cajas, self.crash)
+       self.pilas.escena_actual().colisiones.agregar(self.r, self.lista_cajas, self.crash)
 
     def crash(self, robot, caja):
         self.puntaje.disminuir = 250
@@ -360,8 +369,10 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         # el paramentro de entrada es un Numero de de Fila y otro de columna
 
         self.coordenada = self.matrix.get_valor(fila, columna)
-        self.r.actor.x = pilas.interpolar(self.coordenada[0], 0.3)
-        self.r.actor.y = pilas.interpolar(self.coordenada[1], 0.3)
+        #~ self.r.x = self.pilas.utils.interpolar(self.coordenada[0], 0.3)
+        #~ self.r.y = self.pilas.utils.interpolar(self.coordenada[1], 0.3)
+        self.pilas.utils.interpolar(self.r, 'x', self.coordenada[0], 0.3)
+        self.pilas.utils.interpolar(self.r, 'y', self.coordenada[1], 0.3)
         self.posicion_jugador_ant.punto = self.coordenada
 
 
@@ -406,9 +417,9 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         if self.movtf.has_key(self.indice):
 
             if self.barra_vida.progreso <= 0:
-                tex = pilas.actores.Texto('TE HAS QUEDADO SIN VIDA  :(', magnitud=130, fuente='./data/hollowpoint.ttf')
-                tex.color = pilas.colores.rojo
-                tarea_recomenzar = pilas.mundo.agregar_tarea(1, self._recomenzarsnvida)
+                tex = self.pilas.actores.Texto('TE HAS QUEDADO SIN VIDA  :(', magnitud=130, fuente='./data/hollowpoint.ttf')
+                tex.color = self.pilas.colores.rojo
+                tarea_recomenzar = self.pilas.tareas.agregar(1, self._recomenzarsnvida)
 
             if self.movtf[self.indice] <> False:
                 self.__direccionar_robot(self.movtf[self.indice][2])
@@ -416,7 +427,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
             if self.movtf[self.indice] <> False:
                 tupla = (self.movtf[self.indice][0], self.movtf[self.indice][1])
 
-                if self.r.actor.x == self.posicion_jugador_ant.x and self.r.actor.y == self.posicion_jugador_ant.y:  # espero a terminar la interpolacion para avanzar el actor
+                if self.r.x == self.posicion_jugador_ant.x and self.r.y == self.posicion_jugador_ant.y:  # espero a terminar la interpolacion para avanzar el actor
 
 
                     self.posicion_jugador.punto = tupla
@@ -429,7 +440,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
                         print 'You Win'
                         self.config.lvlup=True
                         self.config.save_values()
-                        tarea_recomenzar = pilas.mundo.agregar_tarea(0.5, self._recomenzar)
+                        tarea_recomenzar = self.pilas.tareas.agregar(0.5, self._recomenzar)
 
 
 
@@ -439,13 +450,13 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
             elif self.movtf[self.indice] == False and self.fuera == False:  # SE FUE DEL MAPA
 
 
-                tarea_recomenzar = pilas.mundo.agregar_tarea(1.5, self._recomenzarfall)  # tareapara volver a arrancar
+                tarea_recomenzar = self.pilas.tareas.agregar(1.5, self._recomenzarfall)  # tareapara volver a arrancar
 
                 self.animacion.fueradelmapa()
                 self.__caer_robot_mapa()
 
                 print ('Has caido del mapa')
-                self.r.actor.escala = [0], 1
+                self.r.escala = [0], 1
                 self.fuera = True
 
 
@@ -454,53 +465,53 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
                 for i in range(0, giro[1]):
                     self.giro_ant = self.giro_ant + giro[0]
                     self.giro_ant = self.giro_ant % 4
-                    self.tarea_aparecer_robot = pilas.mundo.agregar_tarea(0.15, self.__tarea_direccionar_robot)
+                    self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
                     self.botones.setGiro()
             else:  # -1 gira a la izquierda
                 for i in range(0, giro[1]):
                     self.giro_ant = self.giro_ant + giro[0]
                     self.giro_ant = self.giro_ant % 4
-                    self.tarea_aparecer_robot = pilas.mundo.agregar_tarea(0.15, self.__tarea_direccionar_robot)
+                    self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
                     self.botones.setGiro()
 
         return True
 
     def __caer_robot_mapa(self):
-        if self.r.actor.x == self.posicion_jugador_ant.x and self.r.actor.y == self.posicion_jugador_ant.y:  # espero a q termine la ultima interpolacion
-            if self.r.actor.x > 0 and self.r.actor.y > 0:
-                print self.r.actor.x, self.r.actor.y
-                self.r.actor.x = pilas.interpolar(self.r.actor.x + 200, tipo='lineal', duracion=2)
-                self.r.actor.y = pilas.interpolar(self.r.actor.y + 200, tipo='lineal', duracion=2)
+        if self.r.x == self.posicion_jugador_ant.x and self.r.y == self.posicion_jugador_ant.y:  # espero a q termine la ultima interpolacion
+            if self.r.x > 0 and self.r.y > 0:
+                print self.r.x, self.r.y
+                self.r.x = self.pilas.utils.interpolar(self.r.x + 200, tipo='lineal', duracion=2)
+                self.r.y = self.pilas.utils.interpolar(self.r.y + 200, tipo='lineal', duracion=2)
 
-            if self.r.actor.x < 0 and self.r.actor.y > 0:
-                print self.r.actor.x, self.r.actor.y
-                self.r.actor.x = pilas.interpolar(self.r.actor.x - 200, tipo='lineal', duracion=2)
-                self.r.actor.y = pilas.interpolar(self.r.actor.y + 200, tipo='lineal', duracion=2)
+            if self.r.x < 0 and self.r.y > 0:
+                print self.r.x, self.r.y
+                self.r.x = self.pilas.utils.interpolar(self.r.x - 200, tipo='lineal', duracion=2)
+                self.r.y = self.pilas.utils.interpolar(self.r.y + 200, tipo='lineal', duracion=2)
 
-            if self.r.actor.x > 0 and self.r.actor.y < 0:
-                print self.r.actor.x, self.r.actor.y
-                self.r.actor.x = pilas.interpolar(self.r.actor.x + 200, tipo='lineal', duracion=2)
-                self.r.actor.y = pilas.interpolar(self.r.actor.y - 200, tipo='lineal', duracion=2)
+            if self.r.x > 0 and self.r.y < 0:
+                print self.r.x, self.r.y
+                self.r.x = self.pilas.utils.interpolar(self.r.x + 200, tipo='lineal', duracion=2)
+                self.r.y = self.pilas.utils.interpolar(self.r.y - 200, tipo='lineal', duracion=2)
 
-            if self.r.actor.x < 0 and self.r.actor.y < 0:
-                print self.r.actor.x, self.r.actor.y
-                self.r.actor.x = pilas.interpolar(self.r.actor.x - 200, tipo='lineal', duracion=2)
-                self.r.actor.y = pilas.interpolar(self.r.actor.y - 200, tipo='lineal', duracion=2)
+            if self.r.x < 0 and self.r.y < 0:
+                print self.r.x, self.r.y
+                self.r.x = self.pilas.utils.interpolar(self.r.x - 200, tipo='lineal', duracion=2)
+                self.r.y = self.pilas.utils.interpolar(self.r.y - 200, tipo='lineal', duracion=2)
 
     def __escape(self, evento):
 
-        pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
+        self.pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
 
     def _recomenzar(self):
-        pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'newlevel'))
+        self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'newlevel'))
         return False
 
     def _recomenzarsnvida(self):
-        pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'sinvida'))
+        self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'sinvida'))
         return False
 
     def _recomenzarfall(self):
-        pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'fallmap'))
+        self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'fallmap'))
         return False
 
     def _conexiones(self):

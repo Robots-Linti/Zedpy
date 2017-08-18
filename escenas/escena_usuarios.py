@@ -2,7 +2,10 @@ __author__ = 'sym'
 import pilasengine
 import escenas
 import data
-import duinobot
+try:
+	import duinobot
+except:
+	print "Error al importar el modulo duinobot."
 
 
 class EscenaDeUsuarios(pilasengine.escenas.Escena):
@@ -51,6 +54,7 @@ class EscenaDeUsuarios(pilasengine.escenas.Escena):
         self.box_name.imagen_caja = self.pilas.imagenes.cargar(self.imag_caja)
         self.box_name.escala = 2
         self.box_name.transparencia = 60
+        self.box_name.texto = "NombreDeJugador"
 
         self.boton_ok = self.pilas.actores.Boton(x=-156, y=163, ruta_normal=self.imag_ok_normal,
                                                   ruta_press=self.imag_ok_press, ruta_over=self.imag_ok_over)

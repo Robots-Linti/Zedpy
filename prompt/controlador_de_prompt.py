@@ -9,7 +9,7 @@ este modulo maneja las imagenes y cursor del Prompt
 '''
 
 class ControladorDePrompt:
-    def __init__(self):
+    def __init__(self, pilas):
         # creo la instancia para cada movimiento q voy a realizar
         # se guarda de la forma de tupla (<instancia_felcha>,<instancia_numero>,int_numero)
         # sin int_numero==0 entonces <instancia_numero>==0, y no voy a tener un actor
@@ -30,6 +30,7 @@ class ControladorDePrompt:
         self.imag_7='imag/Prompt/7.png'
         self.imag_8='imag/Prompt/8.png'
         self.imag_9='imag/Prompt/9.png'
+        self.pilas = pilas
         self.overfl=False
 
 
@@ -67,16 +68,16 @@ class ControladorDePrompt:
 
 
     def aparecer_botones(self):
-        cursor_grilla=pilas.imagenes.cargar_grilla('imag/Prompt/cursorpront.png',17)
-        self.cursor = pilas.actores.Animacion(cursor_grilla, ciclica=True, velocidad=50)
+        cursor_grilla=self.pilas.imagenes.cargar_grilla('imag/Prompt/cursorpront.png',17)
+        self.cursor = self.pilas.actores.Animacion(cursor_grilla, ciclica=True, velocidad=50)
         self.__mueve_cursor()
 
-        self.boton_cursor_derecha=pilas.actores.boton.Boton(x=513,y=-530,ruta_normal='imag/Prompt/derecha_prompt_1.png', ruta_press='imag/Prompt/derecha_prompt_2.png', ruta_over='imag/Prompt/derecha_prompt_2.png')
+        self.boton_cursor_derecha=self.pilas.actores.Boton(x=513,y=-530,ruta_normal='imag/Prompt/derecha_prompt_1.png', ruta_press='imag/Prompt/derecha_prompt_2.png', ruta_over='imag/Prompt/derecha_prompt_2.png')
         self.boton_cursor_derecha.conectar_presionado(self.__cursor_derecha)
         self.boton_cursor_derecha.conectar_sobre(self.boton_cursor_derecha.pintar_presionado)
         self.boton_cursor_derecha.conectar_normal(self.boton_cursor_derecha.pintar_normal)
 
-        self.boton_cursor_izquierda=pilas.actores.boton.Boton(x=414,y=-530,ruta_normal='imag/Prompt/izquierda_prompt_1.png', ruta_press='imag/Prompt/izquierda_prompt_2.png', ruta_over='imag/Prompt/izquierda_prompt_2.png')
+        self.boton_cursor_izquierda=self.pilas.actores.Boton(x=414,y=-530,ruta_normal='imag/Prompt/izquierda_prompt_1.png', ruta_press='imag/Prompt/izquierda_prompt_2.png', ruta_over='imag/Prompt/izquierda_prompt_2.png')
         self.boton_cursor_izquierda.conectar_presionado(self.__cursor_izquierda)
         self.boton_cursor_izquierda.conectar_sobre(self.boton_cursor_izquierda.pintar_presionado)
         self.boton_cursor_izquierda.conectar_normal(self.boton_cursor_izquierda.pintar_normal)
@@ -117,91 +118,91 @@ class ControladorDePrompt:
 
 
         if cantidad==1:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_1)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_1)
             self.n.set_imagen(imagen)
 
 
 
 
         if cantidad==2:
-            self.n=pilas.actores.Actor(x=300,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_2)
+            self.n=self.pilas.actores.Actor(x=300,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_2)
             self.n.set_imagen(imagen)
 
 
         if cantidad==3:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_3)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_3)
             self.n.set_imagen(imagen)
 
         if cantidad==4:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_4)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_4)
             self.n.set_imagen(imagen)
 
 
 
         if cantidad==5:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_5)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_5)
             self.n.set_imagen(imagen)
 
 
 
         if cantidad==6:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_6)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_6)
             self.n.set_imagen(imagen)
 
 
 
 
         if cantidad==7:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_7)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_7)
             self.n.set_imagen(imagen)
 
 
 
         if cantidad==8:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_8)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_8)
             self.n.set_imagen(imagen)
 
 
         if cantidad==9:
-            self.n=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_9)
+            self.n=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_9)
             self.n.set_imagen(imagen)
 
 
 
 
         if direccion=='avanzar':
-            self.flecha=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_avanzar)
+            self.flecha=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_avanzar)
             self.flecha.set_imagen(imagen)
 
 
 
         if direccion=='retroceder':
-            self.flecha=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_retroceder)
+            self.flecha=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_retroceder)
             self.flecha.set_imagen(imagen)
 
 
 
 
         if direccion=='der':
-            self.flecha=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_derecha)
+            self.flecha=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_derecha)
             self.flecha.set_imagen(imagen)
 
 
         if direccion=='izq':
-            self.flecha=pilas.actores.Actor(x=500,y=-530)
-            imagen = pilas.imagenes.cargar(self.imag_izquierda)
+            self.flecha=self.pilas.actores.Actor(x=500,y=-530)
+            imagen = self.pilas.imagenes.cargar(self.imag_izquierda)
             self.flecha.set_imagen(imagen)
 
 
