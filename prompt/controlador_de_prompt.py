@@ -120,7 +120,7 @@ class ControladorDePrompt:
         if cantidad==1:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_1)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
 
@@ -128,32 +128,32 @@ class ControladorDePrompt:
         if cantidad==2:
             self.n=self.pilas.actores.Actor(x=300,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_2)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
         if cantidad==3:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_3)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
         if cantidad==4:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_4)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
 
         if cantidad==5:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_5)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
 
         if cantidad==6:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_6)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
 
@@ -161,20 +161,20 @@ class ControladorDePrompt:
         if cantidad==7:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_7)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
 
         if cantidad==8:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_8)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
         if cantidad==9:
             self.n=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_9)
-            self.n.set_imagen(imagen)
+            self.n.imagen = imagen
 
 
 
@@ -182,14 +182,14 @@ class ControladorDePrompt:
         if direccion=='avanzar':
             self.flecha=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_avanzar)
-            self.flecha.set_imagen(imagen)
+            self.flecha.imagen = imagen
 
 
 
         if direccion=='retroceder':
             self.flecha=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_retroceder)
-            self.flecha.set_imagen(imagen)
+            self.flecha.imagen = imagen
 
 
 
@@ -197,13 +197,13 @@ class ControladorDePrompt:
         if direccion=='der':
             self.flecha=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_derecha)
-            self.flecha.set_imagen(imagen)
+            self.flecha.imagen = imagen
 
 
         if direccion=='izq':
             self.flecha=self.pilas.actores.Actor(x=500,y=-530)
             imagen = self.pilas.imagenes.cargar(self.imag_izquierda)
-            self.flecha.set_imagen(imagen)
+            self.flecha.imagen = imagen
 
 
 

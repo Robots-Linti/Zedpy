@@ -503,7 +503,8 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
 
     def _recomenzar(self):
-        self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'newlevel'))
+        #~ self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'newlevel'))
+        self.pilas.escenas.EscenaDeJuego(self.jugador, 'newlevel')
         return False
 
     def _recomenzarsnvida(self):

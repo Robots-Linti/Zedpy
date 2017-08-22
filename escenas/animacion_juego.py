@@ -118,7 +118,7 @@ class Animacion(object):
             self.imag_grilla.y = 110
             self.imag_grilla.y = 110
             # TAREA QUE HABILITA LOS BOTONES DE LOS NUMEROS Y COMANDOS
-            self.tarea_habilitar_botones = self.pilas.tareas.agregar_tarea(2, self.habilitar_botones)
+            self.tarea_habilitar_botones = self.pilas.tareas.agregar(2, self.habilitar_botones)
 
     def __move_robot(self):
         # ACA ES DONDE SE MANDA LA LISTA CON LOS MOVIMIENTOS

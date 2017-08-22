@@ -37,7 +37,7 @@ class Puntaje(object):
         self.text.texto=self.texto
         self.text.color= self.pilas.colores.rojo
         self.text.escala=[1.8],1.5
-        tarea=self.pilas.mundo.agregar_tarea (1.5,self.retornar)
+        tarea=self.pilas.tareas.agregar(1.5,self.retornar)
 
     def puntos (self):
         return int (self.text.texto)

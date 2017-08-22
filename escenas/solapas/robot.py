@@ -37,7 +37,7 @@ class OpcionRobot():
         ######## - FIN DE GENERACION DE ELEMENTOS DE
         ########OPCIONES ########################
         ##########################################
-        pilas.mundo.agregar_tarea(1, self._conexion)
+        pilas.tareas.agregar(1, self._conexion)
 
 
     def _conexion(self):

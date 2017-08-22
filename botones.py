@@ -227,16 +227,21 @@ class Botones():
         self.control_prompt.elimino_todo()
 
     def __up(self):
+        print "UP"
         if self.estado_botones:
+            print "UP - dentro"
             self.boton_up.pintar_presionado()
             if self.numb==True:
                 self.control_prompt.agregar_elemento('avanzar',cantidad=self.press)
+                print "UP - dentro dentro"
                 self.numb=False
                 self.__espera_a_flecha(0,recupero=True)
             else:
                 self.control_prompt.agregar_elemento('avanzar',0)
+                print "UP -dentro else"
             self.moves.add_Movimiento(('avanzar',self.press))
             self.press=0   #press se estableze en 0 para que se pueda repetir el numero anterior en la proxima orden
+            print "UP - finish"
 
     def __down(self):
         if self.estado_botones:
