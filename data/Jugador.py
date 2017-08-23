@@ -191,7 +191,14 @@ class Jugador(object):
         print("datos del jugador {} y nro nro nivel {}".format(self._datos, numero_de_nivel))
         
         #~ self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
-        self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
+        print "-.-.-.-.-.-."
+        print self._datos['niveles'][numero_de_nivel]['vidas_lost']
+        print "-.-.-.-.-.-."
+        try:
+            self._vida_lost=self._datos['niveles'][numero_de_nivel]['vidas_lost']
+        except:
+            print "Errpr"
+        print "vida_lost_pass"
         
         
         self._vida_start=self._datos['niveles'][numero_de_nivel]['vidas_start']
@@ -204,6 +211,7 @@ class Jugador(object):
         self._movimientos_realizados=self._datos['niveles'][numero_de_nivel]['movimientos_hechos']
         self._cantidad_choques=self._datos['niveles'][numero_de_nivel]['cantidad_choques']
         self._cantidad_caidas=self._datos['niveles'][numero_de_nivel]['cantidad_caidas']
+        print "vvvvvvvvvvvvvvvvvvvvvvv"
 
 
     def _getDatosNivel(self):
@@ -340,7 +348,7 @@ class Jugador(object):
         self.vida_start          =3
         self.puntaje_maximo      =0
         self.puntaje_obtenido    =0
-        self.tiempo_inicio          =0
+        self.tiempo_inicio       =0
         self.tiempo_fin          =0
         self.tiempo_minimo       =0
         self.movimiento_minimos  =0

@@ -508,11 +508,11 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         return False
 
     def _recomenzarsnvida(self):
-        self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'sinvida'))
+        self.pilas.escenas.EscenaDeJuego(self.jugador, 'sinvida')
         return False
 
     def _recomenzarfall(self):
-        self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'fallmap'))
+        self.pilas.escenas.EscenaDeJuego(self.jugador, 'fallmap')
         return False
 
     def _conexiones(self):

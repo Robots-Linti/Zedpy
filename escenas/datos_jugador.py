@@ -5,6 +5,7 @@ import data
 class datosplayer():
     def __init__(self,instancia_jugador):
         self.jugador=instancia_jugador
+        print "En init de datosplayer"
         self.tiempo_total()
         
     def puntajetotal(self): 
@@ -18,11 +19,14 @@ class datosplayer():
     def tiempo_total(self):
 
         x=self.jugador.nivelmax
-        self.jugador.niveldatos=1
+        print "En tiempo total de datosplayer"
+        self.jugador.niveldatos=0 #FIXME?
+        print "Despues de nivel datos asignado"
         total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio)
         for r in range(2,x+1):
             self.jugador.niveldatos=r
-            total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio)
+            total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio)  #FIX ME
+        print "Despues de nivel datos asignado"
         return total
 
         

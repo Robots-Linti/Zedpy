@@ -23,7 +23,9 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
             self.jugador.nombre = lista[1]
             self.jugador.niveldatos=self.jugador.nivelmax  # esto es para que siga jugando a partir del nivel en q q termino
 
+            print "antes datosplayer"
             escenas.datosplayer(self.jugador)
+            print "pasa datosplayer"
 
         else:
             self.existe=False
