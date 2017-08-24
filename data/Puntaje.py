@@ -14,7 +14,7 @@ class Puntaje(object):
         self.texto=texto
         self.pilas = pilas
         #~ self.text=self.pilas.actores.Texto(self.texto,x,y,magnitud=size,fuente='./data/hollowpoint.ttf') 
-        self.text=self.pilas.actores.Texto(self.texto,x,y,fuente='./data/hollowpoint.ttf') #FIXME -> magnitud error
+        self.text=self.pilas.actores.Texto(self.texto,size,fuente='./data/hollowpoint.ttf',x=x,y=y) #FIXME -> magnitud error
 
     def definir(self, puntaje_variable = '0'):
         self.instancia_jugador.puntaje_obtenido=puntaje_variable
