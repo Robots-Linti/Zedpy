@@ -116,7 +116,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.fuera = False  # fuera del mapa?
 
 
-    # Muve mi actor a la posicion indicada  por una fila y columna
+    # Mueve mi actor a la posicion indicada  por una fila y columna
     
         self.fondo = self.pilas.fondos.Fondo("./imag/Fondo.jpg")
         self.animacion = escenas.Animacion(self.pilas)
@@ -243,7 +243,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.jugador.movimientos_hechos=len(self.movimientos_sn_transformar.keys())
 
     def __convertir_movimientos(self):
-        # llama al modulo que se encarga de tranasformar los movimientos enviados
+        # llama al modulo que se encarga de transformar los movimientos enviados
         # de la forma de tupla ej : ('avanzar',2) , [0]=sentido [1]=veces que repite el movimiento
         # se le envia la lista con todos esos movimientos [('avanzar',2),....] esa lista contiene
         # los movimientos sin transformarlos a los que realmente se necesitan para mover el actor en el mapa
@@ -363,14 +363,12 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.jugador.cantidad_choques = self.jugador.cantidad_choques + 1
         caja.eliminar()
 
-    # Muve mi actor a la posicion indicada  por una fila y columna
+    # Mueve mi actor a la posicion indicada  por una fila y columna
     def mover(self, fila, columna):
         # Primero se busca la coordenada correspopndiente dentro de la matriz , para luego posicionar el actor
         # el paramentro de entrada es un Numero de de Fila y otro de columna
 
         self.coordenada = self.matrix.get_valor(fila, columna)
-        #~ self.r.x = self.pilas.utils.interpolar(self.coordenada[0], 0.3)
-        #~ self.r.y = self.pilas.utils.interpolar(self.coordenada[1], 0.3)
         self.pilas.utils.interpolar(self.r, 'x', self.coordenada[0], 0.3)
         self.pilas.utils.interpolar(self.r, 'y', self.coordenada[1], 0.3)
         self.posicion_jugador_ant.punto = self.coordenada

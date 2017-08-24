@@ -31,9 +31,9 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
             self.existe=False
             self.jugador.JugadorNuevo = (self.jugador_nombre)
         p = self.pilas.actores.Sonido()
-        self.chapa = self.pilas.actores.Actor(imagen='imag/escmenu/Inicio-4v1.png', x=-558, y=0)
+        self.chapa = self.pilas.actores.Actor(imagen='imag/escmenu/Inicio-4.png', x=-1500, y=0)
         self.chapa.escala = 1
-        self.fondo = self.pilas.fondos.Fondo("./imag/Interfaz/fondo1.png")
+        self.fondo = self.pilas.fondos.Fondo("./imag/Interfaz/fondo.png")
 
         self.pilas.utils.interpolar(self.chapa,'x',0, tipo='elastico',  duracion=2)
         self.bot = 1
@@ -50,7 +50,7 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
     def event_botones(self):
         if self.bot == 1:
-            self.boton_jugar = self.pilas.actores.Boton(x=-275, y=85, ruta_normal='imag/escmenu/jugar1v1.png',  ruta_press='imag/escmenu/jugar2v1.png', ruta_over='imag/escmenu/jugar2v1.png')
+            self.boton_jugar = self.pilas.actores.Boton(x=-740, y=230, ruta_normal='imag/escmenu/jugar1.png',  ruta_press='imag/escmenu/jugar2.png', ruta_over='imag/escmenu/jugar2.png')
             self.boton_jugar.conectar_presionado(self.comenzar)
             self.boton_jugar.conectar_sobre(self.boton_jugar.pintar_presionado)
             self.boton_jugar.conectar_normal(self.boton_jugar.pintar_normal)
@@ -61,7 +61,7 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
         if self.bot == 3:
 
-            self.boton_ayuda = self.pilas.actores.Boton(x=-275, y=29, ruta_normal='imag/escmenu/aprender1v1.png',ruta_press='imag/escmenu/aprender2v1.png', ruta_over='imag/escmenu/aprender2v1.png')
+            self.boton_ayuda = self.pilas.actores.Boton(x=-740, y=80, ruta_normal='imag/escmenu/aprender1.png',ruta_press='imag/escmenu/aprender2.png', ruta_over='imag/escmenu/aprender2.png')
             self.boton_ayuda.conectar_presionado(self.ayuda)
             self.boton_ayuda.conectar_sobre(self.boton_ayuda.pintar_presionado)
             self.boton_ayuda.conectar_normal(self.boton_ayuda.pintar_normal)
@@ -73,8 +73,8 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
 
         if self.bot == 5:
-            self.boton_opc = self.pilas.actores.Boton(x=-278, y=-26, ruta_normal='imag/escmenu/opciones1v1.png',
-                                                       ruta_press='imag/escmenu/opciones2v1.png', ruta_over='imag/escmenu/opciones2v1.png')
+            self.boton_opc = self.pilas.actores.Boton(x=-740, y=-70, ruta_normal='imag/escmenu/opciones1.png',
+                                                       ruta_press='imag/escmenu/opciones2.png', ruta_over='imag/escmenu/opciones2v1.png')
             self.boton_opc.conectar_presionado(self.opciones)
             self.boton_opc.conectar_sobre(self.boton_opc.pintar_presionado)
             self.boton_opc.conectar_normal(self.boton_opc.pintar_normal)
@@ -85,9 +85,9 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
 
         if self.bot == 6:
-            self.boton_estadistica = self.pilas.actores.Boton(x=-275, y=-81, ruta_normal='imag/escmenu/estadisticas1v1.png',
-                                                               ruta_press='imag/escmenu/estadisticas2v1.png',
-                                                               ruta_over='imag/escmenu/estadisticas2v1.png')
+            self.boton_estadistica = self.pilas.actores.Boton(x=-740, y=-220, ruta_normal='imag/escmenu/estadisticas1.png',
+                                                               ruta_press='imag/escmenu/estadisticas2.png',
+                                                               ruta_over='imag/escmenu/estadisticas2.png')
             self.boton_estadistica.conectar_presionado(self.comenzar)
             self.boton_estadistica.conectar_sobre(self.boton_estadistica.pintar_presionado)
             self.boton_estadistica.conectar_normal(self.boton_estadistica.pintar_normal)

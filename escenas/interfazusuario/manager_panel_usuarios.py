@@ -19,7 +19,7 @@ class InterfazUsuario(object):
 
     def comenzar(self):
 
-        y=111 #comienzo de la lista
+        y=300 #comienzo de la lista
 
         self.mono = self.pilas.actores.Mono()
         #self.mono.aprender(pilas.habilidades.SeguirClicks)
@@ -27,17 +27,17 @@ class InterfazUsuario(object):
         self.mono.z = 1
         self.mono.escala=0
         self.mono.radio_de_colision=10
-        self.mono.x=186
+        self.mono.x=500
         self.mono.click_de_mouse(self.mover_al_mono)
 
 
         for elem in self.lista_de_nombre:
-            self.m=self.pilas.actores.Texto(elem,magnitud=25,fuente='./escenas/interfazusuario/AGENCYB.TTF')
-            self.m.radio_de_colision=10
+            self.m=self.pilas.actores.Texto(elem,magnitud=55,fuente='./escenas/interfazusuario/AGENCYB.TTF')
+            self.m.radio_de_colision=15
             self.lista_de_botones.append(self.m)
-            y=y-37
+            y=y-75
             self.m.y=y
-            self.m.x=-295
+            self.m.x=-800
             self.m.z=-5
 
         self.pilas.escena_actual().colisiones.agregar(self.mono,self.lista_de_botones,self.cambiar_escena)

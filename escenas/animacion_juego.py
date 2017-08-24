@@ -19,19 +19,19 @@ class Animacion(object):
 
 
         # actor que es el led de abajo!
-        self.placalcd = self.pilas.actores.Actor(imagen='imag/Interfaz/placalcd.png', x=-37, y=-744)
+        self.placalcd = self.pilas.actores.Actor(imagen='imag/Interfaz/placalcd.png', x=-100, y=-2000)
         self.placalcd.escala = 1
 
         # actor que es la imageen de engranajes de la izquierda
-        self.imag_engr_izq = self.pilas.actores.Actor(imagen='imag/Interfaz/Engraizq_1.png', x=-677, y=1)
+        self.imag_engr_izq = self.pilas.actores.Actor(imagen='imag/Interfaz/Engraizq_1.png', x=-1820, y=1)
         self.imag_engr_izq.escala = 1
-        self.fin_x_chapa = -401
+        self.fin_x_chapa = -1078
 
 
         # actor que es la imageen de engranajes de la derecha
-        self.imag_engr_der = self.pilas.actores.Actor(imagen='imag/Interfaz/Engrader.png', x=677, y=1)
+        self.imag_engr_der = self.pilas.actores.Actor(imagen='imag/Interfaz/Engrader.png', x=1820, y=1)
         self.imag_engr_der.escala = 1
-        self.fin_x_chapa_dercha = 355
+        self.fin_x_chapa_dercha = 955
 
         # ENGRANAJE 1 Que SE MUEVE
        
@@ -39,11 +39,11 @@ class Animacion(object):
         #~ self.engranaje_1 = self.pilas.actores.Mono(imagen = imag_engranaje)
         self.engranaje_1 = self.pilas.actores.Actor(imagen = imag_engranaje)
         #~ self.engranaje_1.set_imagen()
-        self.engranaje_1.x = 231
-        self.engranaje_1.y = -64
+        self.engranaje_1.x = 1670
+        self.engranaje_1.y = -468
         imag_tele = self.pilas.imagenes.cargar_grilla('imag/Interfaz/tvmenor.png', 2)
         imag_tele.escala = 0.2
-        self.tele = self.pilas.actores.Animacion(imag_tele, x=211, y=24, ciclica=True, velocidad=50)
+        self.tele = self.pilas.actores.Animacion(imag_tele, x=1820, y=180, ciclica=True, velocidad=50)
 
 
         # Joystick
@@ -83,14 +83,14 @@ class Animacion(object):
         self.engranaje_estado = True
         self.factor = 0
         self.velocidad = 1
-        #~ self.tarea_engranaje = self.pilas.tareas.agregar(0.01, self.girar_engranaje)
-        #~ self.tarea_stop_engranaje = self.pilas.tareas.agregar(1.6, self.stop_engranaje)
+        self.tarea_engranaje = self.pilas.tareas.agregar(0.01, self.girar_engranaje)
+        self.tarea_stop_engranaje = self.pilas.tareas.agregar(1.6, self.stop_engranaje)
 
         self.botones = botones.Botones(self.pilas)
 
 
         if self.config.graficos == True and self.config.lvlup==False:
-            self.pilas.utils.interpolar(self.placalcd,'y' ,-145, tipo='lineal', duracion=4)
+            self.pilas.utils.interpolar(self.placalcd,'y' ,-390, tipo='lineal', duracion=4)
             self.pilas.utils.interpolar(self.imag_engr_izq,'x',self.fin_x_chapa, tipo='lineal',  duracion=2)
             self.pilas.utils.interpolar(self.imag_engr_der, 'x', self.fin_x_chapa_dercha, tipo='lineal',  duracion=2)
             self.pilas.utils.interpolar(self.engranaje_1,'x',775, tipo='lineal', duracion=2)

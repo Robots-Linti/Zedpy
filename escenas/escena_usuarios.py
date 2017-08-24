@@ -9,15 +9,15 @@ except:
 
 
 class EscenaDeUsuarios(pilasengine.escenas.Escena):
-    imag_consola_usuario = './imag/Interfaz/usuario/jugador1.png'
+    imag_consola_usuario = './imag/Interfaz/usuario/jugador.png'
     imag_ingrese_nombre = './imag/Interfaz/usuario/ingresanom.png'
-    imag_fondo = './imag/Interfaz/fondo1.png'
+    imag_fondo = './imag/Interfaz/fondo.png'
     imag_animacion = './imag/Interfaz/usuario/barra.png'
-    imag_caja = './imag/Interfaz/usuario/caja1.png'
-    imag_ok_normal = './imag/Interfaz/usuario/jugadoragregav1.png'
-    imag_ok_press = './imag/Interfaz/usuario/jugadoragrega1v1.png'
-    imag_ok_over = './imag/Interfaz/usuario/jugadoragrega1v1.png'
-    imag_info = './imag/Interfaz/info1.png'
+    imag_caja = './imag/Interfaz/usuario/caja.png'
+    imag_ok_normal = './imag/Interfaz/usuario/jugadoragrega.png'
+    imag_ok_press = './imag/Interfaz/usuario/jugadoragrega1.png'
+    imag_ok_over = './imag/Interfaz/usuario/jugadoragrega1.png'
+    imag_info = './imag/Interfaz/info.png'
         
 
     def iniciar(self):
@@ -26,16 +26,16 @@ class EscenaDeUsuarios(pilasengine.escenas.Escena):
         self.alternar_imag=False
 
         self.fondo = self.pilas.fondos.Fondo(self.imag_fondo)
-        self.imagen_consola_usuarios = self.pilas.actores.Actor(imagen = self.imag_consola_usuario, x=-297, y=13)
+        self.imagen_consola_usuarios = self.pilas.actores.Actor(imagen = self.imag_consola_usuario, x=-800, y=50)
 
-        self.imag_barra = self.pilas.actores.Actor(imagen = self.imag_animacion, x=-110, y=178)
+        self.imag_barra = self.pilas.actores.Actor(imagen = self.imag_animacion, x=-800, y=360)
 
-        imag_info = self.pilas.imagenes.cargar_grilla(self.imag_info, 5)
-        self.imag_info = self.pilas.actores.Animacion(imag_info, x=483, y=207, ciclica=True, velocidad=1)
+        imag_info = self.pilas.imagenes.cargar_grilla(self.imag_info, 18)
+        self.imag_info = self.pilas.actores.Animacion(imag_info, x=1300, y=1000, ciclica=True, velocidad=1)
         self.imag_info.cuando_hace_click=self.informacion
-        self.pilas.utils.interpolar(self.imag_info, 'y',-200,duracion=2,tipo='elastico')
-        #~ self.imag_info.escala=1
-        self.imag_info.escala=[0.5],3
+        self.pilas.utils.interpolar(self.imag_info, 'y',-600,duracion=2,tipo='elastico')
+        self.imag_info.escala=2
+        self.imag_info.escala=[1],3
 
 
 
@@ -44,19 +44,19 @@ class EscenaDeUsuarios(pilasengine.escenas.Escena):
         self.ima_escribi_nombre.transparencia = 100
         self.ima_escribi_nombre.z=-5
 
-        self.m = self.pilas.actores.Texto('Nuevo Jugador', x=-370, y=208, magnitud=35,
+        self.m = self.pilas.actores.Texto('Nuevo Jugador', x=-1080, y=560, magnitud=70,
                                      fuente='./escenas/interfazusuario/AGENCYB.TTF')
-        self.m = self.pilas.actores.Texto('Jugadores:', x=-370, y=111, magnitud=35,
+        self.m = self.pilas.actores.Texto('Jugadores:', x=-1145, y=300, magnitud=70,
                                      fuente='./escenas/interfazusuario/AGENCYB.TTF')
 
-        self.box_name = self.pilas.interfaz.IngresoDeTexto(ancho=150, x=-335, y=163)
+        self.box_name = self.pilas.interfaz.IngresoDeTexto(ancho=200, x=-900, y=440)
         self.box_name.solo_letras()
         self.box_name.imagen_caja = self.pilas.imagenes.cargar(self.imag_caja)
-        self.box_name.escala = 2
+        self.box_name.escala = 3
         self.box_name.transparencia = 60
         self.box_name.texto = "NombreDeJugador"
 
-        self.boton_ok = self.pilas.actores.Boton(x=-156, y=163, ruta_normal=self.imag_ok_normal,
+        self.boton_ok = self.pilas.actores.Boton(x=-420, y=440, ruta_normal=self.imag_ok_normal,
                                                   ruta_press=self.imag_ok_press, ruta_over=self.imag_ok_over)
         self.boton_ok.conectar_presionado(self._ok)
         self.boton_ok.conectar_sobre(self.boton_ok.pintar_sobre)
