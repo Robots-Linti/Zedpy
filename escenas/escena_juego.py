@@ -260,18 +260,18 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
     def __direccionar_robot(self, value):
         # simplemente recibe un valor , del 1 al 4 ,para que el robot apunte correctamente .
         #    0=Apunta ARRIBA
-        #    1=Apunta DERECHA
+        #    1=Apunta IZQUIERDA
         #    2=Apunta ABAJO
-        #    3=Apunta IZQUIERDA
+        #    3=Apunta DERECHA
 
         if value == 0:
             self.r.rotacion = 180  # 180
         elif value == 1:
-            self.r.rotacion = 270  # 270
+            self.r.rotacion = 90  # 90
         elif value == 2:
             self.r.rotacion = 0  # 0
         elif value == 3:
-            self.r.rotacion = 90  # 90
+            self.r.rotacion = 270  # 270
 
         self.giro_ant = value
 
