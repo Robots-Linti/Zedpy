@@ -149,7 +149,7 @@ class Botones():
                 x=x+135
             y=y-129
 
-        if self.config.graficos==True and self.config.lvlup==False:
+        if self.config.graficos and not self.config.lvlup:
              ## comienZo de todas las interpolaciones de los botones
             #self.boton_1.x=pilas.interpolar(self.posiciones.get_valor(0,0)[0],tipo='lineal',demora=1 , duracion=2)
             self.pilas.utils.interpolar(self.boton_1,'x',self.posiciones.get_valor(0,0)[0],tipo='lineal' , duracion=2)
@@ -227,26 +227,21 @@ class Botones():
         self.control_prompt.elimino_todo()
 
     def __up(self):
-        print "UP"
         if self.estado_botones:
-            print "UP - dentro"
             self.boton_up.pintar_presionado()
-            if self.numb==True:
+            if self.numb:
                 self.control_prompt.agregar_elemento('avanzar',cantidad=self.press)
-                print "UP - dentro dentro"
                 self.numb=False
                 self.__espera_a_flecha(0,recupero=True)
             else:
                 self.control_prompt.agregar_elemento('avanzar',0)
-                print "UP -dentro else"
             self.moves.add_Movimiento(('avanzar',self.press))
             self.press=0   #press se estableze en 0 para que se pueda repetir el numero anterior en la proxima orden
-            print "UP - finish"
 
     def __down(self):
         if self.estado_botones:
             self.boton_down.pintar_presionado()
-            if self.numb==True:
+            if self.numb:
                 self.control_prompt.agregar_elemento('retroceder',cantidad=self.press)
                 self.numb=False
                 self.__espera_a_flecha(0,recupero=True)
@@ -265,7 +260,7 @@ class Botones():
     def __derecha(self):
         if self.estado_botones:
             self.boton_right.pintar_presionado()
-            if self.numb==True:
+            if self.numb:
                 self.control_prompt.agregar_elemento('der',cantidad=self.press)
                 self.numb=False
                 self.giro=(1,self.press)
@@ -281,7 +276,7 @@ class Botones():
     def __izquierda(self):
         if self.estado_botones:
             self.boton_left.pintar_presionado()
-            if self.numb==True:
+            if self.numb:
                 self.control_prompt.agregar_elemento('izq',cantidad=self.press)
                 self.numb=False
                 self.giro=(-1,self.press)
@@ -299,7 +294,7 @@ class Botones():
     def __espera_a_flecha(self,boton,recupero=False):
 
 
-        if self.retorn_boton_ant==True and recupero==False:
+        if self.retorn_boton_ant and not recupero:
             self.aux_boton.pintar_normal()
             self.aux_boton.conectar_normal(self.aux_boton.pintar_normal)
             self.aux_boton.conectar_sobre(self.aux_boton.pintar_sobre)
@@ -308,13 +303,13 @@ class Botones():
             boton.conectar_sobre(boton.pintar_presionado)
             self.aux_boton=boton
             self.retorn_boton_ant=True
-        elif recupero==False:
+        elif not recupero:
             boton.pintar_presionado()
             boton.conectar_normal(boton.pintar_presionado)
             boton.conectar_sobre(boton.pintar_presionado)
             self.aux_boton=boton
             self.retorn_boton_ant=True
-        if recupero==True:
+        if recupero:
             self.aux_boton.pintar_normal()
             self.aux_boton.conectar_normal(self.aux_boton.pintar_normal)
             self.aux_boton.conectar_sobre(self.aux_boton.pintar_sobre)

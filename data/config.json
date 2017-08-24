@@ -16,11 +16,11 @@
         "animacion": true
     },
     "robot": {
-        "time": 1,
-        "speed": 50,
         "board": "/dev/ttyUSB3",
+        "speed": 50,
+        "id": 16,
         "name": "multiplo_n6",
-        "id": 16
+        "time": 1
     },
     "modo_libre": {
         "speed": 50,
