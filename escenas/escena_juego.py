@@ -197,7 +197,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.tiempo.escala = 0
         self.control_tiempo.iniciar_tiempo()
         self.tiempo_final = self.control_tiempo.next_time(self.config.tiempomaximo)
-        self.pilas.tareas.siempre(0.4, self.show_time)
+        self.tarea_tiempo = self.pilas.tareas.siempre(0.4, self.show_time)
 
         self.puntaje = data.Puntaje(self.pilas, x=1050, y=290, jugador=self.jugador, size=60)
         self.puntaje.z = -5
@@ -498,7 +498,19 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
     def __escape(self, evento):
 
-        self.pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
+        #~ self.pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
+        #~ self.pilas.escenas.EscenaMenuq(self.jugador)
+        self.tarea_tiempo.terminar()
+        self.prueba_fea = self.pilas.actores.Actor(imagen="./imag/Interfaz/fondo.png")
+        self.boton_reanudar=self.pilas.actores.Boton(x=-740,y=200,ruta_normal='imag/escmenu/reanudar1.png', ruta_press='imag/escmenu/reanudar2.png', ruta_over='imag/escmenu/reanudar2.png')
+        self.boton_reanudar.conectar_presionado(self.eliminar_pausa)
+        self.boton_reanudar.conectar_sobre(self.boton_reanudar.pintar_presionado)
+        self.boton_reanudar.conectar_normal(self.boton_reanudar.pintar_normal)
+    
+    def eliminar_pausa(self, *evnt):
+		self.prueba_fea.eliminar()
+		self.boton_reanudar.eliminar()
+		self.tarea_tiempo = self.pilas.tareas.siempre(0.4, self.show_time)
 
     def _recomenzar(self):
         #~ self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'newlevel'))

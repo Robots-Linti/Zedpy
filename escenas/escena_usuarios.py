@@ -82,10 +82,10 @@ class EscenaDeUsuarios(pilasengine.escenas.Escena):
         if name != '':
             lista_de_jugadores = self.datos.getJugadores()
 
-            if self.datos.checkusuario(name) == False:
+            if not self.datos.checkusuario(name):
                 # self.datos.guardar_jugador(jugador=str(name),datos={})
                 self.pilas.escenas.EscenaDeMenu('noexiste', str(name))
-        elif name == '' and self.block_ok == False:
+        elif name == '' and not self.block_ok:
             self.ima_escribi_nombre.transparencia = [0], 1
             self.pilas.tareas.agregar(1.5, self._borrar_texto_ingrese_nombre)
             self.block_ok = True
@@ -93,7 +93,7 @@ class EscenaDeUsuarios(pilasengine.escenas.Escena):
 
 
     def informacion(self,evento):
-        if self.alternar_imag==False:
+        if not self.alternar_imag:
             self.alternar_imag=True
             self.imag_informacion=self.pilas.actores.Actor(x=580,y=-490,imagen='./imag/informacion/burbuja.png')
             self.imag_informacion.transparencia=100

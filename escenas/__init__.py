@@ -4,7 +4,7 @@ __author__ = 'cristian'
 from escena_usuarios import *
 from escena_juego import *
 from escena_menu import *
-#~ from escena_menu_q import *
+from escena_menu_q import *
 #~ 
 #~ from escena_ayuda import *
 from animacion_juego import *

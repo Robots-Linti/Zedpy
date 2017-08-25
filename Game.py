@@ -10,6 +10,7 @@ pilas = pilasengine.iniciar(ancho=2751, alto=1306, titulo='Robot',  pantalla_com
 #vinculo
 pilas.escenas.vincular(escenas.EscenaDeUsuarios)
 pilas.escenas.vincular(escenas.EscenaDeMenu)
+pilas.escenas.vincular(escenas.EscenaMenuq)
 pilas.escenas.vincular(escenas.EscenaDeJuego)
 
 pilas.escenas.EscenaDeUsuarios()
