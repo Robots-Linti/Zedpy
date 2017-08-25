@@ -23,11 +23,11 @@ class datosplayer():
         print "En tiempo total de datosplayer"
         self.jugador.niveldatos=0 #FIXME? (estaba seteado en 1)
         print "Despues de nivel datos asignado"
-        #~ total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio)
+        #~ total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio) FIXME (habilitar)
         total = 0
         for r in range(2,x+1):
             self.jugador.niveldatos=r
-            #~ total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio)  #FIX ME
+            #~ total=(self.jugador.tiempo_fin-self.jugador.tiempo_inicio)  #FIX ME (habilitar)
             total= 0
         print "Despues de nivel datos asignado"
         return total
