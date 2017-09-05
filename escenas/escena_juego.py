@@ -502,22 +502,22 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         if self.r.x == self.posicion_jugador_ant.x and self.r.y == self.posicion_jugador_ant.y:  # espero a q termine la ultima interpolacion
             if self.r.x > 0 and self.r.y > 0:
                 print self.r.x, self.r.y
-                self.r.x = self.pilas.utils.interpolar(self.r, 'x', 200, tipo='lineal', duracion=2)
-                self.r.y = self.pilas.utils.interpolar(self.r, 'y', 200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'x', 200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'y', 200, tipo='lineal', duracion=2)
             if self.r.x < 0 and self.r.y > 0:
                 print self.r.x, self.r.y
-                self.r.x = self.pilas.utils.interpolar(self.r, 'x', - 200, tipo='lineal', duracion=2)
-                self.r.y = self.pilas.utils.interpolar(self.r, 'y', 200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'x', -200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'y', 200, tipo='lineal', duracion=2)
 
             if self.r.x > 0 and self.r.y < 0:
                 print self.r.x, self.r.y
-                self.r.x = self.pilas.utils.interpolar(self.r, 'x', 200, tipo='lineal', duracion=2)
-                self.r.y = self.pilas.utils.interpolar(self.r, 'y', -200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'x', 200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'y', -200, tipo='lineal', duracion=2)
 
             if self.r.x < 0 and self.r.y < 0:
                 print self.r.x, self.r.y
-                self.r.x = self.pilas.utils.interpolar(self.r, 'x', - 200, tipo='lineal', duracion=2)
-                self.r.y = self.pilas.utils.interpolar(self.r, 'y', 200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'x', -200, tipo='lineal', duracion=2)
+                self.pilas.utils.interpolar(self.r, 'y', 200, tipo='lineal', duracion=2)
 
     def __escape(self, evento):
 
