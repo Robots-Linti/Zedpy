@@ -54,7 +54,7 @@ class Animacion(object):
         self.boton_run = self.pilas.actores.Boton(x=820, y=-1085, ruta_normal='imag/comando/Controles/runoff.png',
                                                    ruta_press='imag/comando/Controles/runon.png',
                                                    ruta_over='imag/comando/Controles/runover.png')
-        self.boton_run.conectar_presionado(self.__run)
+        #~ self.boton_run.conectar_presionado(self.__run)
         self.boton_run.conectar_sobre(self.boton_run.pintar_sobre)
         self.boton_run.conectar_normal(self.boton_run.pintar_normal)
 
@@ -133,7 +133,7 @@ class Animacion(object):
         self.boton_robot.conectar_normal(self.boton_robot.pintar_presionado)
 
     def deshabilitar_boton_robot(self):
-        self.boton_robot.conectar_presionado(self.__run)  # no gace nada run tiene un pass
+        self.boton_robot.conectar_presionado(self.__run)  # no hace nada run tiene un pass
         self.boton_robot.conectar_sobre(self.boton_robot.pintar_normal)
         self.boton_robot.conectar_normal(self.boton_robot.pintar_normal)
 
@@ -156,7 +156,8 @@ class Animacion(object):
         tarea_transparencia = self.pilas.tareas.agregar(0.01, self._fueradelmapatransparencia)
 
     def __run(self):
-        pass
+        #~ pass
+        print self.lista_movimientos
 
     def alternar_animacion_robot(self, r):
         if self.robot_animacion == False:
@@ -194,3 +195,6 @@ class Animacion(object):
     def habilitar_botones(self):
         self.botones.habilitar_botones(True)
         return False
+        
+    #~ def connect_movimientos(self, ejuego):
+		#~ self.boton_run.conectar_presionado(ejuego.__realizar_movimiento)

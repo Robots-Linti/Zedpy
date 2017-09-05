@@ -22,8 +22,10 @@ class Mover_Robot:
 
         try:
             self.config = data.Configuracion()
-            self.b = duinobot.Board(self.config.board)
-            self.r = duinobot.Robot(self.b, self.config.idrobot)
+            #~ self.b = duinobot.Board(self.config.board)
+            self.b = duinobot.Board("/dev/ttyUSB0")
+            #~ self.r = duinobot.Robot(self.b, self.config.idrobot)
+            self.r = duinobot.Robot(self.b, 9)
             self.keys = diccionario.keys()
             self.dict = diccionario
             self.ln = len(self.keys)

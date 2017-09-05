@@ -21,15 +21,11 @@ class Opciones(pilasengine.escenas.Escena):
     solapagrafico2='./imag/Interfaz/solapas/graficosoff.png'
 
 
-    def __init__(self):
-        pilas.escena.Base.__init__(self)
-        self.config=data.Manager_config.Configuracion()
-
-
     def iniciar(self):
         ##########################INTERFAZ GRAFICA############################################
 
-
+        self.config=data.Manager_config.Configuracion()
+        
         self.fondo = pilas.fondos.Fondo(self.imag_fondo)
         self.imagen_consola_usuarios = pilas.actores.Actor(self.imag_panel, x=0, y=50)
         self.btn_robot=pilas.actores.Actor(self.solaparobot1,x=-424,y=600)

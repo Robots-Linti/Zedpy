@@ -119,12 +119,14 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
     def ayuda(self):
 
-        self.pilas.almacenar_escena(escenas.escena_ayuda.iniciar(self.ls))
+        #~ self.pilas.almacenar_escena(escenas.escena_ayuda.iniciar(self.ls))
+        self.pilas.escenas.EscenaDeAyuda(self.ls)
 
 
 
     def opciones(self):
-        self.pilas.almacenar_escena(escenas.Opciones())
+        #~ self.pilas.almacenar_escena(escenas.Opciones())
+        self.pilas.escenas.Opciones()
 
     def comenzar(self):
         if self.existe:
