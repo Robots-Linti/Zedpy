@@ -418,35 +418,35 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.giro_real[0] = self.giro_real[0] + giro[0]
         self.giro_real[1] = giro[1]
         
-        print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
-        print self.movimientos.get_Movimientos()
-        print self.indice
-        print giro
-        print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+        #~ print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
+        #~ print self.movimientos.get_Movimientos()
+        #~ print self.indice
+        #~ print giro
+        #~ print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
 
         #~ while ():
         if self.movtf.has_key(self.indice):
-            print "if 1"
+            #~ print "if 1"
 
             if self.barra_vida.progreso <= 0:
-                print "if 2"
+                #~ print "if 2"
                 tex = self.pilas.actores.Texto('TE HAS QUEDADO SIN VIDA  :(', magnitud=130, fuente='./data/hollowpoint.ttf')
                 tex.color = self.pilas.colores.rojo
                 tarea_recomenzar = self.pilas.tareas.agregar(1, self._recomenzarsnvida)
 
             if self.movtf[self.indice] <> False:
-                print "if 3"
+                #~ print "if 3"
                 self.__direccionar_robot(self.movtf[self.indice][2])
 
             if self.movtf[self.indice] <> False:
-                print "if 4"
+                #~ print "if 4"
                 tupla = (self.movtf[self.indice][0], self.movtf[self.indice][1])
                 print self.r.x
                 print self.posicion_jugador_ant.x 
                 print self.r.y
                 print self.posicion_jugador_ant.y
                 if self.r.x == self.posicion_jugador_ant.x and self.r.y == self.posicion_jugador_ant.y:  # espero a terminar la interpolacion para avanzar el actor
-                    print "if 5"
+                    #~ print "if 5"
 
                     self.posicion_jugador.punto = tupla
                     # self.posicion_jugador_ant.punto = tupla
@@ -467,7 +467,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
                     #~ self.__realizar_movimiento()
                         
             elif self.movtf[self.indice] == False and self.fuera == False:  # SE FUE DEL MAPA
-                print "if 7"
+                #~ print "if 7"
 
                 tarea_recomenzar = self.pilas.tareas.agregar(1.5, self._recomenzarfall)  # tareapara volver a arrancar
 
@@ -481,7 +481,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
         #Esto que sigue sirve? Pareciera siempre valer lo mismo.
         elif giro[1] >= 0:
-            print "if 8"
+            #~ print "if 8"
             if giro[0] > 0:  # +1 gira a la derecha
                 for i in range(0, giro[1]):
                     self.giro_ant = self.giro_ant + giro[0]
