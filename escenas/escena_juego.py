@@ -22,6 +22,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.config = data.Manager_config.Configuracion()
         # se encarga de tomar los horarios y sacar la diferencia
         self.control_tiempo = lib.Tiempo()
+        self.en_pausa = False
 
         self.puntaje_max = 1000 * self.jugador.nivel
 
@@ -516,17 +517,24 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
         #~ self.pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
         #~ self.pilas.escenas.EscenaMenuq(self.jugador)
-        self.tarea_tiempo.terminar()
-        self.prueba_fea = self.pilas.actores.Actor(imagen="./imag/Interfaz/fondo.png")
-        self.boton_reanudar=self.pilas.actores.Boton(x=-740,y=200,ruta_normal='imag/escmenu/reanudar1.png', ruta_press='imag/escmenu/reanudar2.png', ruta_over='imag/escmenu/reanudar2.png')
-        self.boton_reanudar.conectar_presionado(self.eliminar_pausa)
-        self.boton_reanudar.conectar_sobre(self.boton_reanudar.pintar_presionado)
-        self.boton_reanudar.conectar_normal(self.boton_reanudar.pintar_normal)
+        #~ self.pulsa_tecla_escape.deshabilitar()
+        if not(self.en_pausa):
+			self.en_pausa = True
+			self.tarea_tiempo.terminar()
+			self.prueba_fea = self.pilas.actores.Actor(imagen="./imag/Interfaz/fondo.png")
+			self.boton_reanudar=self.pilas.actores.Boton(x=-740,y=200,ruta_normal='imag/escmenu/reanudar1.png', ruta_press='imag/escmenu/reanudar2.png', ruta_over='imag/escmenu/reanudar2.png')
+			self.boton_reanudar.conectar_presionado(self.eliminar_pausa)
+			self.boton_reanudar.conectar_sobre(self.boton_reanudar.pintar_presionado)
+			self.boton_reanudar.conectar_normal(self.boton_reanudar.pintar_normal)
+        else:
+			self.eliminar_pausa()
     
     def eliminar_pausa(self, *evnt):
+		#~ self.pulsa_tecla_escape.habilitar()
 		self.prueba_fea.eliminar()
 		self.boton_reanudar.eliminar()
 		self.tarea_tiempo = self.pilas.tareas.siempre(0.4, self.show_time)
+		self.en_pausa = False
 
     def _recomenzar(self):
         #~ self.pilas.cambiar_escena(escenas.escena_juego.iniciar(self.jugador, 'newlevel'))
