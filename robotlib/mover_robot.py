@@ -43,23 +43,23 @@ class Mover_Robot:
 
         if (self.dict[self.ind][0] == 'avanzar'):
             print ('avanza')
-            #~ self.r.forward(self.config.speedrobot, self.config.timerobot * veces)
-            self.r.forward(50,1*veces)
+            self.r.forward(self.config.speedrobot, self.config.timerobot * veces)
+            #~ self.r.forward(50,1*veces)
 
         if (self.dict[self.ind][0] == 'der'):
             print ('der')
-            #~ self.r.turnRight(self.config.speedrobot, self.config.timerobot * veces)
-            self.r.turnRight(50,1*veces)
+            self.r.turnRight(self.config.speedrobot, self.config.timerobot * veces)
+            #~ self.r.turnRight(50,1*veces)
 
         if (self.dict[self.ind][0] == 'izq'):
             print ('izq')
-            #~ self.r.turnLeft(self.config.speedrobot, self.config.timerobot * veces)
-            self.r.turnLeft(50,1*veces)
+            self.r.turnLeft(self.config.speedrobot, self.config.timerobot * veces)
+            #~ self.r.turnLeft(50,1*veces)
 
         if (self.dict[self.ind][0] == 'retroceder'):
             print ('atras')
-            #~ self.r.backward(self.config.speedrobot, self.config.timerobot * veces)
-            self.r.backward(50,1*veces)
+            self.r.backward(self.config.speedrobot, self.config.timerobot * veces)
+            #~ self.r.backward(50,1*veces)
 
         if self.ind<=self.ln:
             self.ind=self.ind+1
