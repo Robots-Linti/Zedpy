@@ -271,13 +271,10 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
             self.r.rotacion = 180  # 180
         elif value == 1:
             self.r.rotacion = 90  # 90
-            #~ self.rb.turnLeft(50,1)
         elif value == 2:
             self.r.rotacion = 0  # 0
-            #~ self.rb.turnLeft(50,2)
         elif value == 3:
             self.r.rotacion = 270  # 270
-            #~ self.rb.turnRight(50,1)
 
         self.giro_ant = value
 
@@ -441,10 +438,6 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
             if self.movtf[self.indice] <> False:
                 #~ print "if 4"
                 tupla = (self.movtf[self.indice][0], self.movtf[self.indice][1])
-                print self.r.x
-                print self.posicion_jugador_ant.x 
-                print self.r.y
-                print self.posicion_jugador_ant.y
                 if self.r.x == self.posicion_jugador_ant.x and self.r.y == self.posicion_jugador_ant.y:  # espero a terminar la interpolacion para avanzar el actor
                     #~ print "if 5"
 
