@@ -13,14 +13,14 @@
         "tiempo_max": 200
     },
     "graficos": {
-        "animacion": true
+        "animacion": false
     },
     "robot": {
-        "board": "/dev/ttyUSB0",
+        "time": 1,
         "speed": 50,
         "id": 3,
         "name": "multiplo_n6",
-        "time": 1
+        "board": "/dev/ttyUSB0"
     },
     "modo_libre": {
         "speed": 50,

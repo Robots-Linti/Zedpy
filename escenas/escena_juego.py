@@ -539,6 +539,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 		#~ self.pulsa_tecla_escape.habilitar()
 		self.control_tiempo.stopPause()
 		self.prueba_fea.eliminar()
+		self.boton_salir.eliminar()
 		self.boton_reanudar.eliminar()
 		self.tarea_tiempo = self.pilas.tareas.siempre(0.4, self.show_time)
 		self.en_pausa = False
