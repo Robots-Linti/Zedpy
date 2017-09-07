@@ -474,20 +474,20 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
                 
 
         #Esto que sigue sirve? Pareciera siempre valer lo mismo.
-        elif giro[1] >= 0:
+        #~ elif giro[1] >= 0:
             #~ print "if 8"
-            if giro[0] > 0:  # +1 gira a la derecha
-                for i in range(0, giro[1]):
-                    self.giro_ant = self.giro_ant + giro[0]
-                    self.giro_ant = self.giro_ant % 4
-                    self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
-                    self.botones.setGiro()
-            else:  # -1 gira a la izquierda
-                for i in range(0, giro[1]):
-                    self.giro_ant = self.giro_ant + giro[0]
-                    self.giro_ant = self.giro_ant % 4
-                    self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
-                    self.botones.setGiro()
+            #~ if giro[0] > 0:  # +1 gira a la derecha
+                #~ for i in range(0, giro[1]):
+                    #~ self.giro_ant = self.giro_ant + giro[0]
+                    #~ self.giro_ant = self.giro_ant % 4
+                    #~ self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
+                    #~ self.botones.setGiro()
+            #~ else:  # -1 gira a la izquierda
+                #~ for i in range(0, giro[1]):
+                    #~ self.giro_ant = self.giro_ant + giro[0]
+                    #~ self.giro_ant = self.giro_ant % 4
+                    #~ self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
+                    #~ self.botones.setGiro()
         #~ self.__realizar_movimiento()
         
         return True
@@ -527,8 +527,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 			self.boton_reanudar.conectar_presionado(self.eliminar_pausa)
 			self.boton_reanudar.conectar_sobre(self.boton_reanudar.pintar_presionado)
 			self.boton_reanudar.conectar_normal(self.boton_reanudar.pintar_normal)
-			self.boton_salir = self.pilas.actores.Boton(x=-740, y=-370, ruta_normal='imag/escmenu/salir1.png',
-														 ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
+			self.boton_salir = self.pilas.actores.Boton(x=-740, y=-370, ruta_normal='imag/escmenu/salir1.png', ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
 			self.boton_salir.conectar_presionado(self.salir)
 			self.boton_salir.conectar_sobre(self.boton_salir.pintar_presionado)
 			self.boton_salir.conectar_normal(self.boton_salir.pintar_normal)
