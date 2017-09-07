@@ -6,15 +6,15 @@ class Graficos():
     fuente = './escenas/interfazusuario/AGENCYB.TTF'
 
 
-    def __init__(self,config):
-
+    def __init__(self,config, pilas):
+        self.pilas = pilas
         self.config=config
         self.x=-480
         self.y=400
-        self.graf=pilas.actores.Actor (x=self.x,y=self.y,imagen='./imag/Interfaz/solapas/cuadro.png')
-        self.tick=pilas.actores.Actor (x=self.x,y=self.y,imagen='./imag/Interfaz/solapas/tilde.png')
+        self.graf=self.pilas.actores.Actor (x=self.x,y=self.y,imagen='./imag/Interfaz/solapas/cuadro.png')
+        self.tick=self.pilas.actores.Actor (x=self.x,y=self.y,imagen='./imag/Interfaz/solapas/tilde.png')
         self.tick.escala=0
-        self.txt=pilas.actores.Texto('Animaciones' ,x=self.x+180,y=self.y,magnitud=35,fuente=self.fuente)
+        self.txt=self.pilas.actores.Texto('Animaciones' ,x=self.x+180,y=self.y,magnitud=35,fuente=self.fuente)
 
         self.graf.cuando_hace_click= self.alternar_seleccion
 

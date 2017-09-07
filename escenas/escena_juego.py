@@ -519,6 +519,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         #~ self.pilas.escenas.EscenaMenuq(self.jugador)
         #~ self.pulsa_tecla_escape.deshabilitar()
         if not(self.en_pausa):
+			self.control_tiempo.startPause()
 			self.en_pausa = True
 			self.tarea_tiempo.terminar()
 			self.prueba_fea = self.pilas.actores.Actor(imagen="./imag/Interfaz/fondo.png")
@@ -526,11 +527,17 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 			self.boton_reanudar.conectar_presionado(self.eliminar_pausa)
 			self.boton_reanudar.conectar_sobre(self.boton_reanudar.pintar_presionado)
 			self.boton_reanudar.conectar_normal(self.boton_reanudar.pintar_normal)
+			self.boton_salir = self.pilas.actores.Boton(x=-740, y=-370, ruta_normal='imag/escmenu/salir1.png',
+														 ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
+			self.boton_salir.conectar_presionado(self.salir)
+			self.boton_salir.conectar_sobre(self.boton_salir.pintar_presionado)
+			self.boton_salir.conectar_normal(self.boton_salir.pintar_normal)
         else:
 			self.eliminar_pausa()
     
     def eliminar_pausa(self, *evnt):
 		#~ self.pulsa_tecla_escape.habilitar()
+		self.control_tiempo.stopPause()
 		self.prueba_fea.eliminar()
 		self.boton_reanudar.eliminar()
 		self.tarea_tiempo = self.pilas.tareas.siempre(0.4, self.show_time)
@@ -568,6 +575,9 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         elif self.conexion == False:
             self.animacion.deshabilitar_boton_robot()
             self.habilitado = False
+            
+    def salir(self):
+		self.pilas.escenas.EscenaDeMenu('existe',self.jugador.nombre)
 
 
 iniciar = EscenaDeJuego

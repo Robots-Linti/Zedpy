@@ -9,7 +9,7 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
 
     def iniciar(self, *lista):
-        print 'haber'
+        print 'A ver...'
         print lista
         self.jugador_nombre = lista[1]
 
@@ -126,7 +126,7 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
     def opciones(self):
         #~ self.pilas.almacenar_escena(escenas.Opciones())
-        self.pilas.escenas.Opciones()
+        self.pilas.escenas.Opciones(self.jugador.nombre)
 
     def comenzar(self):
         if self.existe:

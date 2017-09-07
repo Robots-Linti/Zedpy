@@ -21,31 +21,31 @@ class Opciones(pilasengine.escenas.Escena):
     solapagrafico2='./imag/Interfaz/solapas/graficosoff.png'
 
 
-    def iniciar(self):
+    def iniciar(self, nom_jugador):
         ##########################INTERFAZ GRAFICA############################################
 
         self.config=data.Manager_config.Configuracion()
-        
-        self.fondo = pilas.fondos.Fondo(self.imag_fondo)
-        self.imagen_consola_usuarios = pilas.actores.Actor(self.imag_panel, x=0, y=50)
-        self.btn_robot=pilas.actores.Actor(self.solaparobot1,x=-424,y=600)
+        self.nombre_j = nom_jugador
+        self.fondo = self.pilas.fondos.Fondo(self.imag_fondo)
+        self.imagen_consola_usuarios = self.pilas.actores.Actor(imagen=self.imag_panel, x=0, y=50)
+        self.btn_robot=self.pilas.actores.Actor(imagen=self.solaparobot1,x=-424,y=600)
         self.btn_robot.cuando_hace_click=self.robot
 
-        self.btn_juego= pilas.actores.Actor (x=-210,y=600,imagen=self.solapajuego2)
+        self.btn_juego= self.pilas.actores.Actor (x=-210,y=600,imagen=self.solapajuego2)
         self.btn_juego.cuando_hace_click=self.juego
 
-        self.btn_modo= pilas.actores.Actor (x=2,y=600,imagen=self.solapamodo2)
+        self.btn_modo= self.pilas.actores.Actor (x=2,y=600,imagen=self.solapamodo2)
         self.btn_modo.cuando_hace_click=self.modolibre
 
-        self.btn_sonidos= pilas.actores.Actor (x=213,y=600,imagen=self.solapasonido2)
+        self.btn_sonidos= self.pilas.actores.Actor (x=213,y=600,imagen=self.solapasonido2)
         self.btn_sonidos.cuando_hace_click=self.sonidos
 
-        self.btn_graficos= pilas.actores.Actor (x=426,y=600,imagen=self.solapagrafico2)
+        self.btn_graficos= self.pilas.actores.Actor (x=426,y=600,imagen=self.solapagrafico2)
         self.btn_graficos.cuando_hace_click=self.graficos
 
         #########################FIN INTERFAZ GRAFICA ########################################
 
-        self.opcion=solapas.OpcionRobot(self.config)
+        self.opcion=solapas.OpcionRobot(self.config, self.pilas)
         #self.robot()
         self.pulsa_tecla_escape.conectar(self.ir_a_escena_anterior)
 
@@ -60,7 +60,7 @@ class Opciones(pilasengine.escenas.Escena):
         self.btn_sonidos.imagen=self.solapasonido2
         self.btn_graficos.imagen=self.solapagrafico2
         self.opcion.delete()
-        self.opcion=solapas.OpcionRobot(self.config)
+        self.opcion=solapas.OpcionRobot(self.config,self.pilas)
 
 
     def juego (self):
@@ -70,7 +70,7 @@ class Opciones(pilasengine.escenas.Escena):
         self.btn_sonidos.imagen=self.solapasonido2
         self.btn_graficos.imagen=self.solapagrafico2
         self.opcion.delete()
-        self.opcion=solapas.OpcionJuego(self.config)
+        self.opcion=solapas.OpcionJuego(self.config,self.pilas)
 
 
     def modolibre (self):
@@ -89,7 +89,7 @@ class Opciones(pilasengine.escenas.Escena):
         self.btn_sonidos.imagen=self.solapasonido2
         self.btn_graficos.imagen=self.solapagrafico1
         self.opcion.delete()
-        self.opcion=solapas.Graficos(self.config)
+        self.opcion=solapas.Graficos(self.config,self.pilas)
 
 
     def sonidos(self):
@@ -103,6 +103,7 @@ class Opciones(pilasengine.escenas.Escena):
 
     def ir_a_escena_anterior(self, evento):
         self.opcion.delete()
-        pilas.recuperar_escena()
+        #~ pilas.recuperar_escena()
+        self.pilas.escenas.EscenaDeMenu('existe', self.nombre_j)
 
 iniciar = Opciones

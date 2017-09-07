@@ -6,6 +6,8 @@ class Tiempo(object):
     def __init__(self):
         self._start_time = None
         self._end_time = None
+        self._pause_time = None
+        self._pause = None
 
     def iniciar_tiempo(self):
         self._start_time = datetime.datetime.now()
@@ -23,9 +25,12 @@ class Tiempo(object):
 
     def getInicionext(self):
         return self.inicio_next
-
-
-
+        
+    def startPause(self):
+        self._pause = datetime.datetime.now()
+    
+    def stopPause(self):
+        self._pause_time = datetime.datetime.now() - self._pause
 
     def actual (self):
         return datetime.datetime.now()
@@ -38,7 +43,13 @@ class Tiempo(object):
         """
         if self._start_time <> None:
             if self._end_time <> None:
-                return self._end_time - self._start_time
+                try:
+					print self._end_time - self._start_time
+					print self._end_time - self._start_time - self._pause_time
+                except:
+					print self._end_time - self._start_time
+                t = self._end_time - self._start_time if self._pause_time == None else self._end_time - self._start_time - self._pause_time
+                return t
             else:
                 print '*Falta invocar a metodo finalizar_tiempo*'
         else:

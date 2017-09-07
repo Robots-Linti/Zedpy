@@ -7,8 +7,9 @@ import data
 class OpcionJuego():
     fuente = './escenas/interfazusuario/AGENCYB.TTF'
 
-    def __init__(self, config):
+    def __init__(self, config, pilas):
         self.config = config
+        self.pilas = pilas
         self._tiempomax()
         self._tiempodescuento()
         self._factorbombas()
@@ -18,46 +19,46 @@ class OpcionJuego():
         self._puntoscolision()
 
     def _tiempomax(self):
-        self.txt_tiempomax = pilas.actores.Texto('Tiempo Maximo(seg) para llegar al final:', x=-250, y=500,
+        self.txt_tiempomax = self.pilas.actores.Texto('Tiempo Maximo(seg) para llegar al final:', x=-250, y=500,
                                                  fuente=self.fuente, magnitud=30)
-        self.tiempomax = pilas.interfaz.IngresoDeTexto(str(self.config.tiempomaximo), x=-400, y=440, ancho=100)
+        self.tiempomax = self.pilas.interfaz.IngresoDeTexto(str(self.config.tiempomaximo), x=-400, y=440, ancho=100)
         self.tiempomax.escala = 2
 
     def _tiempodescuento(self):
-        self.txt_tiempodescuento = pilas.actores.Texto('Tiempo Descuento (cada X seg se descuenta puntaje):', x=-165,
+        self.txt_tiempodescuento = self.pilas.actores.Texto('Tiempo Descuento (cada X seg se descuenta puntaje):', x=-165,
                                                        y=360, fuente=self.fuente, magnitud=30)
-        self.tiempodescuento = pilas.interfaz.IngresoDeTexto(str(self.config.tiempodescuento), x=-400, y=300, ancho=100)
+        self.tiempodescuento = self.pilas.interfaz.IngresoDeTexto(str(self.config.tiempodescuento), x=-400, y=300, ancho=100)
         self.tiempodescuento.escala = 2
 
     def _factorbombas(self):
-        self.txt_factorbombas = pilas.actores.Texto('Factor multiplicador de bombas por nivel (1.4):', x=-200, y=-210,
+        self.txt_factorbombas = self.pilas.actores.Texto('Factor multiplicador de bombas por nivel (1.4):', x=-200, y=-210,
                                                     fuente=self.fuente, magnitud=30)
-        self.factorbombas = pilas.interfaz.IngresoDeTexto(str(self.config.fmb), x=-400, y=-270, ancho=100)
+        self.factorbombas = self.pilas.interfaz.IngresoDeTexto(str(self.config.fmb), x=-400, y=-270, ancho=100)
         self.factorbombas.escala = 2
 
     def _maxbomb(self):
-        self.txt_maxbomb = pilas.actores.Texto('Cantidad maxima de bombas (recomendado= 100):', x=-178, y=70,
+        self.txt_maxbomb = self.pilas.actores.Texto('Cantidad maxima de bombas (recomendado= 100):', x=-178, y=70,
                                                fuente=self.fuente, magnitud=30)
-        self.maxbom = pilas.interfaz.IngresoDeTexto(str(self.config.bombasmax), x=-400, y=10, ancho=100)
+        self.maxbom = self.pilas.interfaz.IngresoDeTexto(str(self.config.bombasmax), x=-400, y=10, ancho=100)
         self.maxbom.escala = 2
 
     def _puntosbomb(self):
-        self.txt_puntosbomba = pilas.actores.Texto('Puntaje restado por colision con bomba:', x=-245, y=-70,
+        self.txt_puntosbomba = self.pilas.actores.Texto('Puntaje restado por colision con bomba:', x=-245, y=-70,
                                                    fuente=self.fuente, magnitud=30)
-        self.puntosbomba = pilas.interfaz.IngresoDeTexto(str(self.config.disminuirptosbomba), x=-400, y=-130, ancho=100)
+        self.puntosbomba = self.pilas.interfaz.IngresoDeTexto(str(self.config.disminuirptosbomba), x=-400, y=-130, ancho=100)
         self.puntosbomba.escala = 2
 
     def _puntostiempo(self):
-        self.txt_puntostiempo = pilas.actores.Texto('Puntaje restado cada X tiempo', x=-318, y=210, fuente=self.fuente,
+        self.txt_puntostiempo = self.pilas.actores.Texto('Puntaje restado cada X tiempo', x=-318, y=210, fuente=self.fuente,
                                                     magnitud=30)
-        self.puntostiempo = pilas.interfaz.IngresoDeTexto(str(self.config.disminuirptostiempo), x=-400, y=150,
+        self.puntostiempo = self.pilas.interfaz.IngresoDeTexto(str(self.config.disminuirptostiempo), x=-400, y=150,
                                                           ancho=100)
         self.puntostiempo.escala = 2
 
     def _puntoscolision(self):
-        self.txt_factcolision = pilas.actores.Texto('Factor X de vida restada por colision (nivel*X+5)', x=-190, y=-350,
+        self.txt_factcolision = self.pilas.actores.Texto('Factor X de vida restada por colision (nivel*X+5)', x=-190, y=-350,
                                                     fuente=self.fuente, magnitud=30)
-        self.factcolision = pilas.interfaz.IngresoDeTexto(str(self.config.factcolision), x=-400, y=-410, ancho=100)
+        self.factcolision = self.pilas.interfaz.IngresoDeTexto(str(self.config.factcolision), x=-400, y=-410, ancho=100)
         self.factcolision.escala = 2
 
     def save(self):
