@@ -33,7 +33,9 @@ class InterfazUsuario(object):
 
         for elem in self.lista_de_nombre:
             self.m=self.pilas.actores.Texto(elem,magnitud=55,fuente='./escenas/interfazusuario/AGENCYB.TTF')
-            self.m.radio_de_colision=15
+            rectangulo = self.pilas.fisica.Rectangulo(0, 0, 500, 35, sensor=True, dinamica=False)
+            self.m.figura_de_colision = rectangulo
+            #~ self.m.radio_de_colision=25
             self.lista_de_botones.append(self.m)
             y=y-75
             self.m.y=y
