@@ -3,11 +3,11 @@ import pilasengine
 import escenas
 
 class EscenaDeAyuda(pilasengine.escenas.Escena):
-    imag_1='./imag/ayuda/ayuda.jpg'
-    imag_2='./imag/ayuda/ayuda2.jpg'
+    imag_1='./imag/ayuda/ayuda.png'
+    imag_2='./imag/ayuda/ayuda2.png'
 
 
-    def iniciar(self):
+    def iniciar(self, lista):
         self.ls=lista
         self.ayuda1 = self.pilas.actores.Actor(imagen=self.imag_1, x=0, y=0)
         self.ayuda1.transparencia=0
@@ -21,7 +21,7 @@ class EscenaDeAyuda(pilasengine.escenas.Escena):
         self.pulsa_tecla_escape.conectar(self.__escape)
 
     def __escape(self,evento):
-        self.pilas.recuperar_escena()
+        self.pilas.escenas.EscenaDeMenu(self.ls[0],self.ls[1])
 
 
     def event2 (self,evento):

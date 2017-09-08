@@ -12,7 +12,7 @@ pilas.escenas.vincular(escenas.EscenaDeUsuarios)
 pilas.escenas.vincular(escenas.EscenaDeMenu)
 #~ pilas.escenas.vincular(escenas.EscenaMenuq)
 pilas.escenas.vincular(escenas.EscenaDeJuego)
-#~ pilas.escenas.vincular(escenas.EscenaDeAyuda)
+pilas.escenas.vincular(escenas.EscenaDeAyuda)
 pilas.escenas.vincular(escenas.Opciones)
 
 pilas.escenas.EscenaDeUsuarios()
