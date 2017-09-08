@@ -7,7 +7,7 @@
         "disminuir_puntos_bomba": 250,
         "tiempo_descuento": 100,
         "factormultiplicacionbombas": 3.0,
-        "cantidad_maxima_bombas": 100,
+        "cantidad_maxima_bombas": 50,
         "dificultad": 0,
         "movimientos_minimos": 15,
         "tiempo_max": 200
@@ -16,11 +16,11 @@
         "animacion": false
     },
     "robot": {
-        "time": 1,
-        "speed": 50,
         "id": 3,
+        "speed": 50,
+        "board": "/dev/ttyUSB0",
         "name": "multiplo_n6",
-        "board": "/dev/ttyUSB0"
+        "time": 1
     },
     "modo_libre": {
         "speed": 50,
