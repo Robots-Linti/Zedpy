@@ -410,7 +410,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         giro = self.botones.getGiro()  # obtengo una tupla (+-1, si es -1 no hay que realizar giro)
         self.giro_real[0] = self.giro_real[0] + giro[0]
         self.giro_real[1] = giro[1]
-        
+
         #~ print "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||"
         #~ print self.movimientos.get_Movimientos()
         #~ print self.indice
@@ -454,7 +454,6 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
                         self.pilas.tareas.una_vez(0.5, self.__realizar_movimiento)
                 #~ else:
                     #~ self.__realizar_movimiento()
-                        
             elif self.movtf[self.indice] == False and self.fuera == False:  # SE FUE DEL MAPA
                 #~ print "if 7"
 
@@ -466,25 +465,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
                 print ('Has caido del mapa')
                 self.r.escala = [0], 1
                 self.fuera = True
-                
 
-        #Esto que sigue sirve? Pareciera siempre valer lo mismo.
-        #~ elif giro[1] >= 0:
-            #~ print "if 8"
-            #~ if giro[0] > 0:  # +1 gira a la derecha
-                #~ for i in range(0, giro[1]):
-                    #~ self.giro_ant = self.giro_ant + giro[0]
-                    #~ self.giro_ant = self.giro_ant % 4
-                    #~ self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
-                    #~ self.botones.setGiro()
-            #~ else:  # -1 gira a la izquierda
-                #~ for i in range(0, giro[1]):
-                    #~ self.giro_ant = self.giro_ant + giro[0]
-                    #~ self.giro_ant = self.giro_ant % 4
-                    #~ self.tarea_aparecer_robot = self.pilas.tareas.agregar(0.15, self.__tarea_direccionar_robot)
-                    #~ self.botones.setGiro()
-        #~ self.__realizar_movimiento()
-        
         return True
 
     def __caer_robot_mapa(self):
