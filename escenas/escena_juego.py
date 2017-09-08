@@ -15,6 +15,7 @@ except:
 class EscenaDeJuego(pilasengine.escenas.Escena):
     
     def iniciar(self, instancia_jugador, estado):
+        self.escenario_listo = False
         self.habilitado = True # boton robot
         self.jugador = instancia_jugador
 
@@ -126,13 +127,6 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         print("+++++pase por matriz grilla++++++++")
 
 
-        # actor robotaaaa
-        try:
-			self.b = duinobot.Board("/dev/tty/USB0")
-        except:
-			self.b = None
-			#~ print "Error al conectarse al xBee"
-        #~ self.rb = duinobot.Robot(self.b, 1)
         imagen = self.pilas.imagenes.cargar("imag/Interfaz/Actor/robot2.png")
         self.r = self.pilas.actores.Actor()
         self.r.imagen = imagen
@@ -142,7 +136,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.tarea_animacion_robot = self.pilas.tareas.agregar(0.2, self.alternar_animacion_robot)
 
 
-        if self.config.graficos==True  and self.config.lvlup==False:
+        if self.config.graficos  and not self.config.lvlup:
             self.tarea_aparecer_todo = self.pilas.tareas.agregar(6, self._mostrar_robot)
         else:
             self.tarea_aparecer_todo = self.pilas.tareas.agregar(1, self._mostrar_robot)
@@ -219,6 +213,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.vidas.z=-5
         if self.jugador.vida_start == 1:
             self.vidas.color=self.pilas.colores.rojo
+        self.escenario_listo = True
 
     def _dibujar_fin(self):
         coord = self.matrix.get_valor(self.pos_fin[0][0], self.pos_fin[0][1])
@@ -515,6 +510,8 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 
     def __escape(self, evento):
 
+        if not self.escenario_listo:
+            return
         #~ self.pilas.almacenar_escena(escenas.escena_menu_q.iniciar(self.jugador))
         #~ self.pilas.escenas.EscenaMenuq(self.jugador)
         #~ self.pulsa_tecla_escape.deshabilitar()

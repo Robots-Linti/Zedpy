@@ -123,7 +123,9 @@ class Animacion(object):
     def __move_robot(self):
         # ACA ES DONDE SE MANDA LA LISTA CON LOS MOVIMIENTOS
         print ('intentado mover')
-        self.robot.mover(self.lista_movimientos)
+        if not self.robot.mover(self.lista_movimientos):
+            self.pilas.avisar("Error en la comunicacion")
+            print 'Error de comunicacion'
         print self.lista_movimientos
 
     def habilitar_boton_robot(self, instancia_botones):

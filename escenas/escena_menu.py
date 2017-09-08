@@ -126,7 +126,7 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
 
     def opciones(self):
         #~ self.pilas.almacenar_escena(escenas.Opciones())
-        self.pilas.escenas.Opciones(self.jugador.nombre)
+        self.pilas.escenas.Opciones(self.jugador.nombre, self.ls[0])
 
     def comenzar(self):
         if self.existe:

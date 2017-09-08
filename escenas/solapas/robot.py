@@ -72,7 +72,7 @@ class OpcionRobot():
         # Conecta al xbee y lista los id disponibles.
         self.btn_robot_refresh.imagen=self.boton_press
         try:
-            self.b = duinobot.Board(self.device.texto)
+            self.b = duinobot.Board(self.device.texto, debug=True)
             lista_ids = self.b.report()
             self.presence = True
             self.cadena = 'Robots:'

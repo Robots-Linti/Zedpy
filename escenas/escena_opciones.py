@@ -21,11 +21,12 @@ class Opciones(pilasengine.escenas.Escena):
     solapagrafico2='./imag/Interfaz/solapas/graficosoff.png'
 
 
-    def iniciar(self, nom_jugador):
+    def iniciar(self, nom_jugador, nuevo):
         ##########################INTERFAZ GRAFICA############################################
 
         self.config=data.Manager_config.Configuracion()
         self.nombre_j = nom_jugador
+        self.nuevo_j = nuevo
         self.fondo = self.pilas.fondos.Fondo(self.imag_fondo)
         self.imagen_consola_usuarios = self.pilas.actores.Actor(imagen=self.imag_panel, x=0, y=50)
         self.btn_robot=self.pilas.actores.Actor(imagen=self.solaparobot1,x=-424,y=600)
@@ -104,6 +105,6 @@ class Opciones(pilasengine.escenas.Escena):
     def ir_a_escena_anterior(self, evento):
         self.opcion.delete()
         #~ pilas.recuperar_escena()
-        self.pilas.escenas.EscenaDeMenu('existe', self.nombre_j)
+        self.pilas.escenas.EscenaDeMenu(self.nuevo_j, self.nombre_j)
 
 iniciar = Opciones

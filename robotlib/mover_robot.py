@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 __author__ = 'GasparcitoX'
 import duinobot
 import data
 import pilasengine
 import threading
+import serial
 
 
 class Mover_Robot:
@@ -17,26 +19,35 @@ class Mover_Robot:
 
 
         """
+        self.b = None
+        self.current_board = None
 
     def mover(self, diccionario):
-
         try:
             self.config = data.Configuracion()
-            self.b = duinobot.Board(self.config.board)
-            #~ self.b = duinobot.Board("/dev/ttyUSB0")
+            # Instanciar un board tarda un tiempo, lo instanciamos solamente
+            # si no existe una instancia o si la configuración cambió.
+            if self.b is None or self.config.board != self.current_board:
+                self.b = duinobot.Board(self.config.board, debug=True)
+                self.current_board = self.config.board
+        except serial.serialutil.SerialException:
+            return False
+        else:
             self.r = duinobot.Robot(self.b, self.config.idrobot)
-            #~ self.r = duinobot.Robot(self.b, 3)
-            self.keys = diccionario.keys()
             self.dict = diccionario
-            self.ln = len(self.keys)
             self.ind = 0
-            tarea_send = threading.Timer(1,self._send )
+            tarea_send = threading.Thread(target=self._send)
+            # Los threads daemon son matados automáticamente cuando el
+            # programa termina.
+            tarea_send.daemon = True
             tarea_send.start()
-        except():
-            pilas.avisar("Error en la comunicacion")
-            print 'Error de comunicacion'
+        return True
+
 
     def _send(self):
+        if self.ind >= len(self.dict):
+            return
+
         veces = self.dict[self.ind][1]
         if veces == 0:
             veces = 1
@@ -57,10 +68,7 @@ class Mover_Robot:
             print ('atras')
             self.r.backward(self.config.speedrobot, self.config.timerobot * veces)
 
-        if self.ind<=self.ln:
-            self.ind=self.ind+1
-            tarea_send = threading.Timer(1,self._send )
-            tarea_send.start()
-        if self.ind>self.ln:
-            self.ind=0
+        self.ind=self.ind+1
+        tarea_send = threading.Timer(1,self._send )
+        tarea_send.start()
 
