@@ -209,7 +209,7 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
         self.puntaje.definir(self.puntaje_max)
 
         self.barra_vida = self.pilas.actores.Energia(x=1130, y=415, progreso=100, ancho=400, alto=60)
-        self.barra_vida.z = -6.5
+        #~ self.barra_vida.z = -6.5
         text = 'Nivel ' + str(self.jugador.nivel)
         self.t = self.pilas.actores.Texto(text, magnitud=70, fuente='./data/hollowpoint.ttf', x=1130, y=130)
         self.t.z = -5
@@ -522,16 +522,33 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 			self.control_tiempo.startPause()
 			self.en_pausa = True
 			self.tarea_tiempo.terminar()
+			#Oculto temporalmente
+			self.t.escala = 0
+			self.tiempo.escala = 0
+			self.puntaje.escala = 0
+			self.barra_vida.escala = 0
+			self.vidas.escala = 0
+			self.puntaje.escala = 0
+			#
 			self.prueba_fea = self.pilas.actores.Actor(imagen="./imag/Interfaz/fondo.png")
+			#~ self.prueba_fea.z = -15
 			self.boton_reanudar=self.pilas.actores.Boton(x=-740,y=200,ruta_normal='imag/escmenu/reanudar1.png', ruta_press='imag/escmenu/reanudar2.png', ruta_over='imag/escmenu/reanudar2.png')
 			self.boton_reanudar.conectar_presionado(self.eliminar_pausa)
 			self.boton_reanudar.conectar_sobre(self.boton_reanudar.pintar_presionado)
 			self.boton_reanudar.conectar_normal(self.boton_reanudar.pintar_normal)
-			self.boton_salir = self.pilas.actores.Boton(x=-740, y=-370, ruta_normal='imag/escmenu/salir1.png', ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
+			self.boton_salir = self.pilas.actores.Boton(x=-740, y=-20, ruta_normal='imag/escmenu/salir1.png', ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
 			self.boton_salir.conectar_presionado(self.salir)
 			self.boton_salir.conectar_sobre(self.boton_salir.pintar_presionado)
 			self.boton_salir.conectar_normal(self.boton_salir.pintar_normal)
         else:
+			#los muestro nuevamente
+			self.t.escala = 1
+			self.tiempo.escala = 1
+			self.puntaje.escala = 1
+			self.barra_vida.escala = 1
+			self.vidas.escala = 1
+			self.puntaje.escala = 1
+			#
 			self.eliminar_pausa()
     
     def eliminar_pausa(self, *evnt):

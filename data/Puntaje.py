@@ -49,12 +49,16 @@ class Puntaje(object):
 
     def _setZ(self,z):
         self.text.z=z
+        
+    def escala(self, val):
+		self.text.escala = val
 
     z= property(fset=_setZ)
 
     aumentar= property (fset=setAumentar)
     disminuir=property (fset=setDisminuir)
     puntos = property (fget=puntos)
+    escala = property (fset=escala)
 
 iniciar=Puntaje
 
