@@ -520,18 +520,17 @@ class EscenaDeJuego(pilasengine.escenas.Escena):
 			self.boton_salir.conectar_normal(self.boton_salir.pintar_normal)
         else:
 			#los muestro nuevamente
-			self.t.escala = 1
-			self.tiempo.escala = 1
-			self.puntaje.escala = 1
-			self.barra_vida.escala = 1
-			self.vidas.escala = 1
-			self.puntaje.escala = 1
-			#
 			self.eliminar_pausa()
     
     def eliminar_pausa(self, *evnt):
 		#~ self.pulsa_tecla_escape.habilitar()
 		self.control_tiempo.stopPause()
+		self.t.escala = 1
+		self.tiempo.escala = 1
+		self.puntaje.escala = 1
+		self.barra_vida.escala = 1
+		self.vidas.escala = 1
+		self.puntaje.escala = 1
 		self.prueba_fea.eliminar()
 		self.boton_salir.eliminar()
 		self.boton_reanudar.eliminar()
