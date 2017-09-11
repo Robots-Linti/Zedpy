@@ -84,20 +84,22 @@ class EscenaDeMenu(pilasengine.escenas.Escena):
             return True
 
 
-        if self.bot == 6:
-            self.boton_estadistica = self.pilas.actores.Boton(x=-740, y=-220, ruta_normal='imag/escmenu/estadisticas1.png',
-                                                               ruta_press='imag/escmenu/estadisticas2.png',
-                                                               ruta_over='imag/escmenu/estadisticas2.png')
-            self.boton_estadistica.conectar_presionado(self.comenzar)
-            self.boton_estadistica.conectar_sobre(self.boton_estadistica.pintar_presionado)
-            self.boton_estadistica.conectar_normal(self.boton_estadistica.pintar_normal)
-            self.boton_estadistica.escala = 0.1
-            self.boton_estadistica.escala = [1], 0.1
-            self.bot = self.bot + 1
-            return True
+        #~ if self.bot == 6:
+            #~ self.boton_estadistica = self.pilas.actores.Boton(x=-740, y=-220, ruta_normal='imag/escmenu/estadisticas1.png',
+                                                               #~ ruta_press='imag/escmenu/estadisticas2.png',
+                                                               #~ ruta_over='imag/escmenu/estadisticas2.png')
+            #~ self.boton_estadistica.conectar_presionado(self.comenzar)
+            #~ self.boton_estadistica.conectar_sobre(self.boton_estadistica.pintar_presionado)
+            #~ self.boton_estadistica.conectar_normal(self.boton_estadistica.pintar_normal)
+            #~ self.boton_estadistica.escala = 0.1
+            #~ self.boton_estadistica.escala = [1], 0.1
+            #~ self.bot = self.bot + 1
+            #~ return True
 
         if self.bot == 9:
-            self.boton_salir = self.pilas.actores.Boton(x=-740, y=-370, ruta_normal='imag/escmenu/salir1.png',
+            #~ self.boton_salir = self.pilas.actores.Boton(x=-740, y=-370, ruta_normal='imag/escmenu/salir1.png',
+                                                         #~ ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
+            self.boton_salir = self.pilas.actores.Boton(x=-740, y=-220, ruta_normal='imag/escmenu/salir1.png',
                                                          ruta_press='imag/escmenu/salir2.png', ruta_over='imag/escmenu/salir2.png')
             self.boton_salir.conectar_presionado(self.salir)
             self.boton_salir.conectar_sobre(self.boton_salir.pintar_presionado)
